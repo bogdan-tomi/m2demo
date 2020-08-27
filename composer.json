@@ -9,7 +9,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "files": [
-            "registration.php"
+            "Evozon/M2Demo/registration.php"
         ],
         "psr-4": {
             "Evozon\\M2Demo\\": ""
