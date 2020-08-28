@@ -3,10 +3,9 @@
     "description": "My first Magento 2 module",
     "type": "magento2-module",
     "version": "1.0.0",
-    "require": {
-        "php": "^7.0.0"
+    "require": {       
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "files": [
             "Evozon/M2Demo/registration.php"
