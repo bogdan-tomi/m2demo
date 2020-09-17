@@ -8,10 +8,12 @@
     "minimum-stability": "stable",
     "autoload": {
         "files": [
-            "Evozon/module-m2demo/registration.php"
+            "Evozon/module-m2demo/registration.php",
+            "Evozon/module-secondary/registration.php"
         ],
         "psr-4": {
-            "Evozon\\M2Demo\\": "Evozon/module-m2demo/"
+            "Evozon\\M2Demo\\":     "Evozon/module-m2demo/",
+            "Evozon\\Secondary\\":  "Evozon/module-secondary/"
         }
     }
 }

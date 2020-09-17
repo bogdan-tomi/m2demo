@@ -17,12 +17,15 @@ class LogProductIdBeforeLoadPlugin
         $this->logger = $logger;
     }
 
-    public function beforeGetById(ProductRepositoryInterface $subject,
-                                  $productId,
-                                  $editMode = false,
-                                  $storeId = null,
-                                  $forceReload = false)
-    {
+    public function beforeGetById(
+        ProductRepositoryInterface $subject,
+        $productId,
+        $editMode = false,
+        $storeId = null,
+        $forceReload = false
+    ) {
+//        $productId++;
         $this->logger->info("Logging before retrieving product by ID $productId");
+//        return [$productId, $editMode, $storeId, $forceReload];
     }
 }
