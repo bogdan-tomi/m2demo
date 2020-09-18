@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Evozon\M2Demo\Block\Hello" name="evozon_m2demo_hello" template="Evozon_M2Demo::world.phtml">
+                <arguments>
+                    <argument name="text" xsi:type="string">Hello World</argument>
+                </arguments>
+                <block class="Evozon\M2Demo\Block\Hello\Child" name="evozon_m2demo_hello_child" template="Evozon_M2Demo::world/child.phtml">
+                    <arguments>
+                        <argument name="child_text" xsi:type="string">Hello World from child block</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
