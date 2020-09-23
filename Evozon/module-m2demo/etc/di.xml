@@ -4,4 +4,12 @@
     <type name="Magento\Catalog\Api\ProductRepositoryInterface">
         <plugin name="evozon_m2demo" type="Evozon\M2Demo\Plugin\LogProductIdBeforeLoadPlugin"/>
     </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="evozonm2demo_countcommand" xsi:type="object">Evozon\M2Demo\Console\Command\ModuleCountCommand</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Framework\Module\ModuleListInterface" type="Magento\Framework\Module\ModuleList" />
 </config>
