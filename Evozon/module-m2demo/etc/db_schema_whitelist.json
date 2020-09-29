@@ -1,0 +1,27 @@
+{
+    "whatever": {
+        "column": {
+            "id": true,
+            "age": true,
+            "name": true,
+            "expiry_date": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "evozon_m2demo_hello_world": {
+        "column": {
+            "id": true,
+            "age": true,
+            "name": true,
+            "expiry_date": true,
+            "re_name": true,
+            "store_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "EVOZON_M2DEMO_HELLO_WORLD_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}

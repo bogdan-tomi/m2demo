@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="evozon_m2demo_hello_world" onCreate="migrateDataFromAnotherTable(whatever)">
+<!--    <table name="whatever" resource="default" engine="innodb" comment="my first table with declarative schema">-->
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID" identity="true"/>
+        <column xsi:type="int" name="age" padding="5" unsigned="true" nullable="false" comment="Age"/>
+<!--        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>-->
+        <column xsi:type="varchar" name="re_name" nullable="false" length="255" comment="Rename" onCreate="migrateDataFrom(name)"/>
+        <column xsi:type="timestamp" name="expiry_date" comment="Date of expiry"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" comment="Store ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="store_id" table="evozon_m2demo_hello_world" column="store_id"
+                    referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    </table>
+</schema>
