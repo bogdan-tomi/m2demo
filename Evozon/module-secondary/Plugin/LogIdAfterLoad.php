@@ -18,6 +18,8 @@ class LogIdAfterLoad
         $this->logger = $logger;
     }
 
+    // around plugins should only be used to substitute the behaviour of the original method,
+    // or if the plugin is required to track some state from before and after the invocation
     public function aroundGetById(
         ProductRepositoryInterface $subject,
         callable $proceed,
@@ -25,9 +27,11 @@ class LogIdAfterLoad
         $editMode = false,
         $storeId = null,
         $forceReload = false
+        //...$args can be used here instead of all the arguments, for a more upgradable approach
     ) {
         $this->logger->info("Logging around before retrieving product by ID $productId");
         $result = $proceed($productId, $editMode, $storeId, $forceReload);
+        //$result = $proceed(...$args);
         $this->logger->info("Logging around after retrieving product by ID $productId");
 
         return $result;

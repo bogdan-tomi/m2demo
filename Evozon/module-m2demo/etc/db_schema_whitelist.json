@@ -17,11 +17,27 @@
             "name": true,
             "expiry_date": true,
             "re_name": true,
-            "store_id": true
+            "store_id": true,
+            "nickname": true,
+            "customer_id": true,
+            "motto": true
         },
         "constraint": {
             "PRIMARY": true,
-            "EVOZON_M2DEMO_HELLO_WORLD_STORE_ID_STORE_STORE_ID": true
+            "EVOZON_M2DEMO_HELLO_WORLD_STORE_ID_STORE_STORE_ID": true,
+            "EVOZON_M2DEMO_HELLO_WORLD_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    },
+    "evozon_m2demo_customer_flair": {
+        "column": {
+            "id": true,
+            "nickname": true,
+            "customer_id": true,
+            "motto": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "EVOZON_M2DEMO_CSTR_FLAIR_CSTR_ID_CSTR_ENTT_ENTT_ID": true
         }
     }
 }
