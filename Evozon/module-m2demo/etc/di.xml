@@ -12,4 +12,5 @@
         </arguments>
     </type>
     <preference for="Magento\Framework\Module\ModuleListInterface" type="Magento\Framework\Module\ModuleList" />
+    <preference for="Evozon\M2Demo\Model\Api\Data\CustomerFlairInterface" type="Evozon\M2Demo\Model\CustomerFlair"/>
 </config>
