@@ -4,6 +4,9 @@
     <type name="Magento\Catalog\Api\ProductRepositoryInterface">
         <plugin name="evozon_m2demo" type="Evozon\M2Demo\Plugin\LogProductIdBeforeLoadPlugin"/>
     </type>
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="evozon_m2demo_customer_flair" type="Evozon\M2Demo\Plugin\CustomerFlairPlugin"/>
+    </type>
     <type name="Magento\Framework\Console\CommandListInterface">
         <arguments>
             <argument name="commands" xsi:type="array">

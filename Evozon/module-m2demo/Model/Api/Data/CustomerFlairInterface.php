@@ -27,7 +27,7 @@ interface CustomerFlairInterface
     /**
      * @return int
      */
-    public function getCustomerId(): int;
+    public function getCustomerId(): ?int;
 
     /**
      * @return void

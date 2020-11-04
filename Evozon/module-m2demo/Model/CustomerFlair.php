@@ -24,9 +24,10 @@ class CustomerFlair extends AbstractModel implements CustomerFlairInterface
         $this->setData('nickname', $nickname);
     }
 
-    public function getCustomerId(): int
+    public function getCustomerId(): ?int
     {
-        return $this->_getData('customer_id');
+        $customerId = $this->_getData('customer_id');
+        return ($customerId) ? (int) $customerId : null;
     }
 
     public function setCustomerId($customerId): void
