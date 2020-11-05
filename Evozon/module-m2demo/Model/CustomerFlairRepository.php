@@ -93,6 +93,9 @@ class CustomerFlairRepository
         $this->customerFlairResource->save($this->ensureIsModel($customerFlair));
     }
 
+    /**
+     * @return CustomerFlairInterface[]
+     */
     public function getForCustomerIds(int ...$customerIds): array
     {
         $customerCollection = $this->collectionFactory->create();

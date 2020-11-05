@@ -8,6 +8,7 @@ use Evozon\M2Demo\Model\CustomerFlairRepository;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerExtensionInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Api\Data\CustomerSearchResultsInterface;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
@@ -69,6 +70,33 @@ class CustomerFlairPlugin
         } else {
             $this->customerFlairRepository->deleteForCustomerId((int) $result->getId());
         }
+        return $result;
+    }
+
+    public function afterGetList(
+        CustomerRepositoryInterface $subject,
+        CustomerSearchResultsInterface $result
+    ): CustomerSearchResultsInterface {
+        /** @var CustomerInterface[] $customers */
+        $customers = array_reduce($result->getItems(), function (array $map, CustomerInterface $customer): array {
+            $customerId = $customer->getId();
+            $map[(int) $customerId] = $customer;
+            return $map;
+        }, []);
+
+        // aka
+//        foreach ($result->getItems() as $customer) {
+//            $customers[(int) $customer->getId()] = $customer;
+//        }
+
+        // getForCustomerIds expects any number of ints, not an array of ints
+        $customerFlairs = $this->customerFlairRepository->getForCustomerIds(...array_keys($customers));
+
+        foreach ($customerFlairs as $customerFlair) {
+            $customerId = $customerFlair->getCustomerId();
+            $customers[$customerId]->getExtensionAttributes()->setEvozonM2demoCustomerFlair($customerFlair);
+        }
+
         return $result;
     }
 }
