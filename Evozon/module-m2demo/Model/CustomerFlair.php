@@ -2,11 +2,12 @@
 
 namespace Evozon\M2Demo\Model;
 
+use Evozon\M2Demo\Model\Api\Data\CustomerFlairExtensionInterface;
 use Evozon\M2Demo\Model\Api\Data\CustomerFlairInterface;
-use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\AbstractExtensibleModel;
 use Evozon\M2Demo\Model\ResourceModel\CustomerFlair as CustomerFlairResource;
 
-class CustomerFlair extends AbstractModel implements CustomerFlairInterface
+class CustomerFlair extends AbstractExtensibleModel implements CustomerFlairInterface
 {
     protected function _construct()
     {
@@ -45,4 +46,13 @@ class CustomerFlair extends AbstractModel implements CustomerFlairInterface
         $this->setData('motto', $motto);
     }
 
+    public function setExtensionAttributes(CustomerFlairExtensionInterface $extensionAttributes)
+    {
+        $this->_setExtensionAttributes($extensionAttributes);
+    }
+
+    public function getExtensionAttributes()
+    {
+        return $this->_getExtensionAttributes();
+    }
 }

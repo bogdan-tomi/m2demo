@@ -4,6 +4,7 @@ namespace Evozon\M2Demo\Model;
 
 use Evozon\M2Demo\Model\Api\Data\CustomerFlairInterface;
 use Evozon\M2Demo\Model\ResourceModel\CustomerFlair as CustomerFlairResource;
+use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface as ExtensionAttributesJoinProcessorInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Reflection\DataObjectProcessor;
 
@@ -25,17 +26,23 @@ class CustomerFlairRepository
      * @var DataObjectProcessor
      */
     private DataObjectProcessor $dataObjProcessor;
+    /**
+     * @var Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface
+     */
+    private ExtensionAttributesJoinProcessorInterface $extensionAttributesJoinProcessor;
 
     public function __construct(
         CustomerFlairFactory $customerFlairFactory,
         CustomerFlairResource $customerFlairResource,
         CustomerFlairResource\CollectionFactory $collectionFactory,
-        DataObjectProcessor $dataObjectProcessor
+        DataObjectProcessor $dataObjectProcessor,
+        ExtensionAttributesJoinProcessorInterface $extensionAttributesJoinProcessor
     ) {
         $this->customerFlairFactory = $customerFlairFactory;
         $this->customerFlairResource = $customerFlairResource;
         $this->collectionFactory = $collectionFactory;
         $this->dataObjProcessor = $dataObjectProcessor;
+        $this->extensionAttributesJoinProcessor = $extensionAttributesJoinProcessor;
     }
 
     /**
@@ -45,6 +52,7 @@ class CustomerFlairRepository
     {
         $customerCollection = $this->collectionFactory->create();
         $customerCollection->addFieldToFilter('customer_id', $customerId);
+        $this->extensionAttributesJoinProcessor->process($customerCollection);
         if ($customerCollection->count() > 0) {
             /** @var CustomerFlair $customer */
             $customer = $customerCollection->getFirstItem();
@@ -100,6 +108,7 @@ class CustomerFlairRepository
     {
         $customerCollection = $this->collectionFactory->create();
         $customerCollection->addFieldToFilter('customer_id', ['in' => $customerIds]);
+        $this->extensionAttributesJoinProcessor->process($customerCollection);
         return $customerCollection->getItems();
     }
 }
