@@ -5,5 +5,8 @@
         <route id="evozon" frontName="evozon">
             <module name="Evozon_M2Demo" />
         </route>
+        <route id="testrouteid" frontName="test">
+            <module name="Evozon_M2Demo"/>
+        </route>
     </router>
 </config>

@@ -1,0 +1,18 @@
+<?php declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+?>
+
+<script type="text/x-magento-init">
+{
+    "#target": {
+        "Evozon_M2Demo/js/requirejs-dependency": {
+            "base_url": "<?= $escaper->escapeJs($block->getBaseUrl()) ?>"
+        }
+    }
+}
+</script>
+
+<pre id="target"></pre>
