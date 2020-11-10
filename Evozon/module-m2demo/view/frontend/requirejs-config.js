@@ -5,5 +5,13 @@ var config = {
         '*': {
             shortcut_dependency: 'Evozon_M2Demo/js/requirejs-dependency'
         }
+    },
+    config: {
+        // mixins are a sort of around plugins, but for RequireJS modules
+        mixins: {
+            'Magento_Checkout/js/checkout-data': {
+                'Evozon_M2Demo/js/checkout-data-mixin': true
+            }
+        }
     }
 };
