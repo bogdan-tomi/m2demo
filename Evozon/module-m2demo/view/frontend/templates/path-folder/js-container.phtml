@@ -5,10 +5,11 @@
 ?>
 <script type="text/x-magento-init">
     {
-        "*" : {
+        "#target" : {
             "Evozon_M2Demo/js/requirejs-example": {
                 "base_url": "<?= $escaper->escapeJs($block->getBaseUrl()) ?>"
             }
         }
     }
 </script>
+<div id="target"></div>
