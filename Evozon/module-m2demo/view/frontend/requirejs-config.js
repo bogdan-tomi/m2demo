@@ -3,7 +3,7 @@ var config = {
     map: {
         // * represents which RequireJS modules can use our alias, stands for all
         '*': {
-            shortcut_dependency: 'Evozon_M2Demo/js/requirejs-dependency'
+            shortcut_dependency: 'Evozon_M2Demo/js/requirejs-dependency' // SKIP .JS SUFFIX!
         }
     },
     config: {
@@ -13,5 +13,6 @@ var config = {
                 'Evozon_M2Demo/js/checkout-data-mixin': true
             }
         }
-    }
+    },
+    deps: ['Evozon_M2Demo/js/logs-when-loaded']
 };
