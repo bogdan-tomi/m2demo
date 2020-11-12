@@ -1,1 +1,11 @@
 <h2><?php echo $block->getChildText()?></h2>
+<h1><?= __('Test validation with jQueryUI widgets')?></h1>
+<form data-mage-init='{"validation": {}}'>
+    <div class="control">
+        <input type="text" name="email" id="email" class="input-text"
+                placeholder="<?= __('Your email') ?>"
+                data-validate="{required: true, 'validate-email': true}"/>
+    </div>
+    <?php // other validation classes can be found under vendor/magento inside .js files such as lib/web/mage/validation.js?>
+    <button type="submit" class="action primary"><?= __('Submit')?></button>
+</form>
