@@ -7,10 +7,13 @@ var config = {
         }
     },
     config: {
-        // mixins are a sort of around plugins, but for RequireJS modules
+        // mixins are a sort of around plugins, but for RequireJS modules or jQuery UI widgets
         mixins: {
             'Magento_Checkout/js/checkout-data': {
                 'Evozon_M2Demo/js/checkout-data-mixin': true
+            },
+            'Magento_Customer/js/password-strength-indicator': {
+                'Evozon_M2Demo/js/password-mixin': true
             }
         }
     },
