@@ -22,4 +22,11 @@ var config = {
             deps: ['Evozon_M2Demo/js/before-products-compare']
         }
     }
+    // },
+    // // paths can be used to map aliases globally, similar to map, but whereas map can only alias full RequireJS modules,
+    // // paths can be used for specific paths. map can de declared to be valid only within a certain module, while
+    // // paths is always applied globally
+    // paths: {
+    //     'evozon': 'Evozon_M2Demo/js/v1'
+    // }
 };
