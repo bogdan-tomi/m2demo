@@ -13,6 +13,7 @@
                         <argument name="child_text" xsi:type="string">Hello World from child block</argument>
                     </arguments>
                 </block>
+                <block name="evozon_m2demo_collapsible" template="Evozon_M2Demo::world/collapsible.phtml"/>
             </block>
         </referenceContainer>
     </body>

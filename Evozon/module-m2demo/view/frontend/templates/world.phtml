@@ -1,3 +1,9 @@
+<?php declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
 <h1><?php echo $block->getText();?></h1>
 
-<?php echo $block->getChildHtml(); ?>
+<?php echo $block->getChildHtml('evozon_m2demo_hello_child'); ?>
+
+<?php echo $block->getChildHtml('evozon_m2demo_collapsible'); ?>
