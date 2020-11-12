@@ -14,5 +14,12 @@ var config = {
             }
         }
     },
-    deps: ['Evozon_M2Demo/js/logs-when-loaded']
+    // 'load' this for all pages, before other modules
+    deps: ['Evozon_M2Demo/js/logs-when-loaded'],
+    // 'load' this before specific module
+    shim: {
+        'Magento_Catalog/js/view/compare-products': {
+            deps: ['Evozon_M2Demo/js/before-products-compare']
+        }
+    }
 };
