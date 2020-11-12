@@ -5,6 +5,8 @@
 <div data-mage-init='{"collapsible": {}}'>
     <div data-role="title">
         <h3><?= __('Title for collapsible content') ?></h3>
+        <?php // trigger needs to be inside title/header, otherwise it doesn't work. also, the title is used by default as a trigger ?>
+        <button data-role="trigger">i'm triggered</button>
     </div>
     <div data-role="content">
         <pre>This text is collapsible and not translated by PHP. Also, this &lt;pre> tag thing is great.</pre>
