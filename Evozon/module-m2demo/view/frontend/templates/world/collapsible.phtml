@@ -2,7 +2,11 @@
 
 /** @var \Magento\Framework\View\Element\Template $block */
 ?>
-<div data-mage-init='{"collapsible": {}}'>
+<div id="collapsible-id" data-mage-init='{
+    "collapsible": {
+        "saveState": true
+    }
+}'>
     <div data-role="title">
         <h3><?= __('Title for collapsible content') ?></h3>
         <?php // trigger needs to be inside title/header, otherwise it doesn't work. also, the title is used by default as a trigger ?>
