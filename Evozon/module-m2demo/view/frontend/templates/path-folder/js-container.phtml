@@ -21,3 +21,20 @@
 <!--        "base_url": "--><?//= $escaper->escapeJs($block->getBaseUrl()) ?><!--"-->
 <!--    }-->
 <!--}'></div>-->
+
+<script type="text/x-magento-init">{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "startSimple": {
+                    "component": "Evozon_M2Demo/js/plain-view-model",
+                    "base_url": "<?= $escaper->escapeJs($block->getBaseUrl()) ?>"
+                }
+            }
+        }
+    }
+}
+</script>
+<div data-bind="scope: 'startSimple'">
+    <h2 data-bind="text: title"></h2>
+</div>
