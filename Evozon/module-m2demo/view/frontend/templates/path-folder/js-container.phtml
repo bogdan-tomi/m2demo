@@ -75,4 +75,16 @@
             <td data-bind="text: $data"></td>
         </tr>
     </table>
+
+    <table>
+        <tr>
+            <td data-bind="i18n: 'Virtual elements'"></td>
+        </tr>
+        <?php // virtual elements allow us to hide them from the DOM as HTML comments ?>
+        <!-- ko foreach: plain_values-->
+        <tr>
+            <td data-bind="text: $data"></td>
+        </tr>
+        <!-- /ko -->
+    </table>
 </div>
