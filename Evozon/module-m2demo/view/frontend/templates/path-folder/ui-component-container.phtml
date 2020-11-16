@@ -6,16 +6,20 @@
 ?>
 
 <script type="text/x-magento-init">{
-        "*": {
-            "Magento_Ui/js/core/app": {
-                "components": {
-                    "exampleUiComponent": {
-                        "component": "Evozon_M2Demo/js/ui-component"
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "exampleUiComponent": {
+                    "component": "Evozon_M2Demo/js/ui-component",
+                    "label": "My first default JSON label property UiComponent! (2)",
+                    "config": {
+                        "label": "My first default JSON label config property UiComponent! (3)"
                     }
                 }
             }
         }
     }
+}
 </script>
 <div data-bind="scope: 'exampleUiComponent'">
     <div data-bind="text: label"></div>
