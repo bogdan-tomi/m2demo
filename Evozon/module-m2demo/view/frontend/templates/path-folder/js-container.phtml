@@ -39,3 +39,40 @@
     <h2 data-bind="text: title"></h2>
     <pre data-bind="text: output"></pre>
 </div>
+
+<?php // observable array example ?>
+<script type="text/x-magento-init">{
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "startSimpleArray": {
+                        "component": "Evozon_M2Demo/js/array-view-model"
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+<div data-bind="scope: 'startSimpleArray'">
+    <table data-bind="foreach: exchange_rates">
+        <tr>
+            <td data-bind="text: currency_to"></td>
+            <td data-bind="text: rate"></td>
+        </tr>
+    </table>
+    <?php
+    // data can be maneuvered on the console using commands like
+    // require('uiRegistry').get('startSimpleArray').exchange_rates.push({currency_to:'EUR', rate:15})
+    // require('uiRegistry').get('startSimpleArray').exchange_rates.pop()
+    // or, in order to replace a single element,
+    // require('uiRegistry').get('startSimpleArray').exchange_rates.array_splice(0, 1, {currency_to:'GBP', rate:12})
+    ?>
+
+    <?php // for plain values, the $data variable can be used when iterating ?>
+    <table data-bind="foreach: plain_values">
+        <tr>
+            <td data-bind="text: $data"></td>
+        </tr>
+    </table>
+</div>
