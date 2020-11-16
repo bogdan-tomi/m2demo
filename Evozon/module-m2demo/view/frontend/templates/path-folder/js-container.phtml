@@ -88,3 +88,32 @@
         <!-- /ko -->
     </table>
 </div>
+
+<script type="text/x-magento-init">{
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "startSimpleTrack": {
+                        "component": "Evozon_M2Demo/js/trackable-view-model"
+                    }
+                }
+            }
+        }
+    }
+</script>
+<div data-bind="scope: 'startSimpleTrack'">
+    <table>
+        <tr>
+            <td data-bind="i18n: 'Trackable observables'"></td>
+        </tr>
+        <?php
+        // using ko.track makes all the properties observables by default, but they are no longer functions so updating the values should be done like
+        // require('uiRegistry').get('startSimpleTrack').value = 5
+        ?>
+        <tr>
+            <td data-bind="text: label"></td>
+            <td data-bind="text: value"></td>
+            <td data-bind="text: power()"></td>
+        </tr>
+    </table>
+</div>
