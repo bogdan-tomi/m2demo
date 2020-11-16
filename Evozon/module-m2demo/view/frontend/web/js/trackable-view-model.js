@@ -10,6 +10,11 @@ define(['ko'], function (ko) {
             }
         });
 
+        // getObservable (https://github.com/SteveSanderson/knockout-es5) is used to access specific observables when track is used
+        ko.getObservable(viewModel, 'value').subscribe(function (newValue) {
+            console.log('Value changed to', newValue);
+        })
+
         return viewModel;
     }
 });
