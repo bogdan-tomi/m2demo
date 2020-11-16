@@ -1,0 +1,22 @@
+<?php declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+?>
+
+<script type="text/x-magento-init">{
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "exampleUiComponent": {
+                        "component": "Evozon_M2Demo/js/ui-component"
+                    }
+                }
+            }
+        }
+    }
+</script>
+<div data-bind="scope: 'exampleUiComponent'">
+    <div data-bind="text: label"></div>
+</div>
