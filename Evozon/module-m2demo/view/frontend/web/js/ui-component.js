@@ -10,6 +10,11 @@ define(['uiElement'], function (UiElement) {
                 label: true,
                 value: true
                 // use the tracks property to make specific UiComponent properties observable
+            },
+            imports: {
+                value: 'uiComponentToImport:value_to_import'
+                // ensure the property being imported to is observable, otherwise the import depends on the load order of the components
+                // also, the first part of the string doesn't need to be the index, it can be any selector
             }
         },
         label: "My first UiComponent!",
