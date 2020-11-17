@@ -16,6 +16,11 @@ define(['uiElement'], function (UiElement) {
                 // ensure the property being imported to is observable, otherwise the import depends on the load order of the components
                 // also, the first part of the string doesn't need to be the index, it can be any selector
             }
+            // },
+            // links: {
+            //     value: 'uiComponentToImport:value_to_import'
+            //     // links can be used for a two-way binding between properties (import/export), both should be observable for them to work properly
+            // }
         },
         label: "My first UiComponent!",
         value: 15,
