@@ -19,8 +19,10 @@ define(['uiElement'], function (UiElement) {
         },
         label: "My first UiComponent!",
         value: 15,
-        someFunc: function () {
-            return this.value * 10;
+        someFunc: function (value) {
+            let return_val = value * 10;
+            console.log('someFunc:', return_val);
+            return return_val;
         }
     })
 });
