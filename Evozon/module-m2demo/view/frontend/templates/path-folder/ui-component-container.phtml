@@ -29,6 +29,16 @@
                                     "template": "Evozon_M2Demo/info"
                                 }
                             }
+                        },
+                        "child3": {
+                            "component": "uiComponent",
+                            "template": "Evozon_M2Demo/info",
+                            "displayArea": "groupA"
+                        },
+                        "child4": {
+                            "component": "uiComponent",
+                            "template": "Evozon_M2Demo/info",
+                            "displayArea": "groupA"
                         }
                     }
                 }
@@ -52,4 +62,9 @@
 
 <div data-bind="scope: 'testUiChild'">
     <div data-bind="template: getTemplate()"></div>
+
+    <?php // display the children by group ?>
+    <!-- ko foreach: getRegion('groupA') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
 </div>
