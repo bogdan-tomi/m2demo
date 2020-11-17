@@ -15,6 +15,22 @@
                     "config": {
                         "label": "My first default JSON label config property UiComponent! (3)"
                     }
+                },
+                "testUiChild": {
+                    "component": "uiComponent",
+                    "template": "Evozon_M2Demo/ui-component-render",
+                    "children": {
+                        "child1": {
+                            "component": "uiComponent",
+                            "template": "Evozon_M2Demo/info",
+                            "children": {
+                                "child2": {
+                                    "component": "uiComponent",
+                                    "template": "Evozon_M2Demo/info"
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -23,4 +39,17 @@
 </script>
 <div data-bind="scope: 'exampleUiComponent'">
     <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<?php
+// using uiComponent instead of our own here, and a custom template to show the UiComponents hierarchy
+// we can use require('uiRegistry').get('index = child1').name to get a specific child by index
+// or we can pass a callback function as a 2rd parameter that applies to that specific element by using
+// require('uiRegistry').get('index = child1', function (c) {console.log(c.name)})
+
+// <!-- ko template: getTemplate() --><!-- /ko --> can be abbreviated to <render />
+?>
+
+<div data-bind="scope: 'testUiChild'">
+    <div data-bind="template: getTemplate()"></div>
 </div>
