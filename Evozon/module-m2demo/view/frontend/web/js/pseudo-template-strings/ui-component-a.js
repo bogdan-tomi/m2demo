@@ -9,7 +9,7 @@ define(['uiComponent'], function (Component) {
                 amount: true // make amount observable
             },
             imports: {
-                // template strings with template placeholders
+                // template strings with template placeholders (placeholders are not keywords, can be replaced)
                 // amount: 'component-b:value'
                 // amount: '${ $.provider }:value'
                 amount: '${ $.provider }:${ $.providerProperty }'
