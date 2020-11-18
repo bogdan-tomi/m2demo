@@ -75,18 +75,7 @@
 <script type="text/x-magento-init">
 {
     "*": {
-        "Magento_Ui/js/core/app": {
-            "components": {
-                "component-a": {
-                    "component": "Evozon_M2Demo/js/pseudo-template-strings/ui-component-a",
-                    "provider": "component-b",
-                    "providerProperty": "value"
-                },
-                "component-b": {
-                    "component": "Evozon_M2Demo/js/pseudo-template-strings/ui-component-b"
-                }
-            }
-        }
+        "Magento_Ui/js/core/app": <?= $block->getJsLayout(); ?>
     }
 }
 </script>

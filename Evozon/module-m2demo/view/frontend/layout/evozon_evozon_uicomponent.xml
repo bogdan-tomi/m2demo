@@ -4,7 +4,24 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block name="evozon-m2-demo-ui-component" template="Evozon_M2Demo::path-folder/ui-component-container.phtml"/>
+            <block name="evozon-m2-demo-ui-component" template="Evozon_M2Demo::path-folder/ui-component-container.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="component-a" xsi:type="array">
+                                <item name="component" xsi:type="string">Evozon_M2Demo/js/pseudo-template-strings/ui-component-a</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="provider" xsi:type="string">component-b</item>
+                                    <item name="providerPropery" xsi:type="string">value</item>
+                                </item>
+                            </item>
+                            <item name="component-b" xsi:type="array">
+                                <item name="component" xsi:type="string">Evozon_M2Demo/js/pseudo-template-strings/ui-component-b</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>
