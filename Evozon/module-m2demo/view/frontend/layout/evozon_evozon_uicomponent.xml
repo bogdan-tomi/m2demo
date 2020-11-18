@@ -12,11 +12,24 @@
                                 <item name="component" xsi:type="string">Evozon_M2Demo/js/pseudo-template-strings/ui-component-a</item>
                                 <item name="config" xsi:type="array">
                                     <item name="provider" xsi:type="string">component-b</item>
-                                    <item name="providerPropery" xsi:type="string">value</item>
+                                    <item name="providerProperty" xsi:type="string">value</item>
                                 </item>
                             </item>
                             <item name="component-b" xsi:type="array">
                                 <item name="component" xsi:type="string">Evozon_M2Demo/js/pseudo-template-strings/ui-component-b</item>
+                            </item>
+                            <item name="root" xsi:type="array">
+                                <item name="component" xsi:type="string">Evozon_M2Demo/js/shared-state/root</item>
+                                <item name="children" xsi:type="array">
+                                    <item name="sharedState" xsi:type="array">
+                                        <item name="component" xsi:type="string">Evozon_M2Demo/js/shared-state/shared-state</item>
+                                    </item>
+                                </item>
+                                <item name="config" xsi:type="array">
+                                    <item name="deps" xsi:type="array">
+                                        <item name="0" xsi:type="string">index = sharedState</item>
+                                    </item>
+                                </item>
                             </item>
                         </item>
                     </argument>

@@ -100,3 +100,20 @@
 // require('uiRegistry').get('minicart_content').remove('some.property') to remove the property (not the some though),
 // for that we need require('uiRegistry').get('minicart_content').remove('some')
 ?>
+
+<hr/>
+
+<?php
+// UiComponent load order can be altered with the deps property, where we can specify which other component(s) should
+// be loaded before this one, by their name (root.sharedState here),
+// or by using any valid Ui registry selector can be used (as in this example, index = sharedState), found in the
+// frontend/layout/evozon_evozon_uicomponent.xml file
+
+// fun fact: if the component does not have a provider set, the first deps is used there instead
+?>
+<div data-bind="scope: 'root'">
+    <div>
+        The UiComponent instance load order test value is:
+        <span data-bind="text: value"></span>
+    </div>
+</div>
