@@ -8,19 +8,23 @@ define(['uiElement'], function (UiElement) {
             template: "Evozon_M2Demo/ui-component-template", // this looks for a ui-component-template HTML file under frontend/web/template
             tracks: {
                 label: true,
-                value: true
+                value: true,
+                stateful_input: true
                 // use the tracks property to make specific UiComponent properties observable
             },
             imports: {
                 value: 'uiComponentToImport:value_to_import'
                 // ensure the property being imported to is observable, otherwise the import depends on the load order of the components
                 // also, the first part of the string doesn't need to be the index, it can be any selector
-            }
+            },
             // },
             // links: {
             //     value: 'uiComponentToImport:value_to_import'
             //     // links can be used for a two-way binding between properties (import/export), both should be observable for them to work properly
             // }
+            statefull: {
+                stateful_input: true
+            }
         },
         label: "My first UiComponent!",
         value: 15,

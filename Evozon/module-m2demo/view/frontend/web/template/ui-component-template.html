@@ -3,3 +3,9 @@
 
 <h3>the (imported) value is: </h3>
 <pre data-bind="text: value"></pre>
+
+<hr/>
+
+<h3>a stateful input value</h3>
+<!-- this adds then updates the value instantly on the local storage, under appData key -->
+<input data-bind="textInput: stateful_input"/>
