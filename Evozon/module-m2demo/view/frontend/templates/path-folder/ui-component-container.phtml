@@ -89,3 +89,14 @@
     <h3 data-bind="text: title"></h3>
     <div data-bind="text: value"></div>
 </div>
+
+<?php
+// get, set and remove methods are inherited for UiComponent from element.js (which in turn uses mageUtils)
+// we can use require('uiRegistry').get(vm => console.log(vm.name)) to get all the UiComponent names
+// and require('uiRegistry').get('minicart_content').get('some.property') to retrieve some.property,
+// which is the same as require('uiRegistry').get('minicart_content').some.property but safe to use, as it includes
+// safety checks,
+// require('uiRegistry').get('minicart_content').set('some.property', 42) to set the value,
+// require('uiRegistry').get('minicart_content').remove('some.property') to remove the property (not the some though),
+// for that we need require('uiRegistry').get('minicart_content').remove('some')
+?>
