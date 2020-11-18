@@ -1,15 +1,12 @@
-define(['uiElement'], function (UiElement) {
+define(['uiComponent'], function (UiComponent) {
     'use strict';
 
-    return UiElement.extend({
+    return UiComponent.extend({
         defaults: {
             imports: {
                 value: "root.sharedState:value"
             },
-            value: 0,
-            tracks: {
-                value: true
-            }
+            value: 0
         }
     })
 });

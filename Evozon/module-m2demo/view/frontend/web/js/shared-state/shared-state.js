@@ -1,7 +1,7 @@
-define(['uiElement'], function (UiElement) {
+define(['uiComponent'], function (UiComponent) {
     'use strict';
 
-    return UiElement.extend({
+    return UiComponent.extend({
         value: 42
     })
 });
