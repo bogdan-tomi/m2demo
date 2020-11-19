@@ -1,9 +1,9 @@
-define(['uiComponent'], function (Component) {
+define(['uiComponent', 'jquery'], function (Component, $) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            title: 'Component B',
+            title: $.mage.__('Component B'),
             value: 55
         }
     })
