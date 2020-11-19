@@ -5,3 +5,12 @@ Some stuff before the component...
 <!-- /ko -->
 
 Some stuff after the component...
+
+<div style="border: 1px solid green; padding: 1em">
+    <div>//todo translate</div>
+    <div data-bind="i18n: '//todo translate'"></div>
+    <div><!-- ko i18n: '//todo translate' --><!-- /ko --></div>
+    <div translate="'//todo translate'"></div> <!-- these two are only processed-->
+    <translate args="'//todo translate'"/> <!-- inside knockout templates-->
+<!-- also, we cannot use these translations with placeholders, viewmodels have to be used instead -->
+</div>
