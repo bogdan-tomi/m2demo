@@ -1,10 +1,10 @@
 define(['Evozon_Secondary/js/lib/create-background-canvas', 'Evozon_Secondary/js/lib/pixel-image-canvas'], function (createBackgroundCanvas, pixelImageOnCanvas) {
     'use strict';
 
-    return function (config, targetElement) {
+    return function (config, targetElement, existingCanvas) {
         const src = config.src || '';
         const pixelSize = Math.max(config.pixelSize || 5, 1);
-        const canvas = createBackgroundCanvas(targetElement);
+        const canvas = existingCanvas || createBackgroundCanvas(targetElement);
         canvas.style.opacity = config.opacity || .5;
 
         const cols = Math.floor(canvas.scrollWidth / pixelSize);

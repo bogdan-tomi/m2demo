@@ -2,19 +2,30 @@
 
 /** @var \Magento\Framework\View\Element\Template $block */
 
-$images = [
-    'Evozon_Secondary/images/cate.jpg',
-    'Evozon_Secondary/images/doge.jpg'
-];
+$cateImage = json_encode($block->getViewFileUrl('Evozon_Secondary/images/cate.jpg'));
+$dogeImage = json_encode($block->getViewFileUrl('Evozon_Secondary/images/doge.jpg'));
 ?>
 
-<script type="text/x-magento-init">
-{
+<script type="text/x-magento-init">{
     "*": {
         "Magento_Ui/js/core/app": {
             "components": {
                 "custom-knockout": {
-                    "component": "Evozon_Secondary/js/viewmodel"
+                    "component": "uiComponent",
+                    "children": {
+                        "cate": {
+                            "component": "Evozon_Secondary/js/viewmodel",
+                            "template": "Evozon_Secondary/pixelbg",
+                            "image": <?= $cateImage ?>,
+                            "displayArea": "groupA"
+                        },
+                        "doge": {
+                            "component": "Evozon_Secondary/js/viewmodel",
+                            "template": "Evozon_Secondary/pixelbg",
+                            "image": <?= $dogeImage ?>,
+                            "displayArea": "groupA"
+                        }
+                    }
                 }
             }
         }
@@ -23,13 +34,7 @@ $images = [
 </script>
 
 <div data-bind="scope: 'custom-knockout'">
-    <?php foreach ($images as $image): ?>
-        <h1 data-bind="pixelbg: '<?= $block->getViewFileUrl($image); ?>', pixelSize: pixelGivenSize">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-            id est laborum.</h1>
-    <?php endforeach; ?>
+    <!-- ko foreach: getRegion('groupA') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
 </div>
-
