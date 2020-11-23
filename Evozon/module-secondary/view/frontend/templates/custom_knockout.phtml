@@ -38,3 +38,27 @@ $dogeImage = json_encode($block->getViewFileUrl('Evozon_Secondary/images/doge.jp
     <!-- ko template: getTemplate() --><!-- /ko -->
     <!-- /ko -->
 </div>
+
+<script type="text/x-magento-init">{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "virtual-custom-knockout": {
+                    "component": "Evozon_Secondary/js/viewmodel"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<div data-bind="scope: 'virtual-custom-knockout'">
+    <h3><?= __('Added via virtual element') ?></h3>
+    <!-- ko pixelbg: <?= $cateImage ?>, pixelSize: pixelGivenSize -->
+    Virtual elementum lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+    id est laborum.
+    <!-- /ko -->
+</div>

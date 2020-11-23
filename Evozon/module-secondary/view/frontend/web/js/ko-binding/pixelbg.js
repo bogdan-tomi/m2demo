@@ -1,6 +1,32 @@
 define(['ko', 'Evozon_Secondary/js/plain/pixelbg'], function (ko, pixelBackground) {
     'use strict';
 
+    // as seen in angular/angular.js, the node type for comments is 8
+    const TYPE_COMMENT = 8;
+
+    function isVirtualElement(node) {
+        return node.nodeType === TYPE_COMMENT;
+    }
+
+    // depending on the desired behaviour, we need to consider the case when the node is of type comment
+    // for example, in our case, we want to create a div,  get all the child nodes of the virtual element, empty it,
+    // insert the children into the div, then inject the div into the virtual element. then, instead of the virtual element,
+    // we return the created div
+    function makeRealElement(virtualElement) {
+        const div = document.createElement('div');
+        // use ko.virtualElements methods to treat comments as real elements
+        const children = ko.virtualElements.childNodes(virtualElement);
+        ko.virtualElements.emptyNode(virtualElement);
+
+        for (let i = 0; i < children.length; i++) {
+            div.appendChild(children[i]);
+        }
+
+        ko.virtualElements.insertAfter(virtualElement, div);
+
+        return div;
+    }
+
     function execute(node, valueAccessor, allBindings, existingCanvas) {
         const value = ko.unwrap(valueAccessor()) || {};
         // we need to build the configuration object that we need to pass to our custom ko (e.g. pixelbackground)
@@ -22,17 +48,24 @@ define(['ko', 'Evozon_Secondary/js/plain/pixelbg'], function (ko, pixelBackgroun
         // allBindings is an object with a get method that allows us to retrieve other properties
         // on the DOM element (e.g. pixelSize)
         init: function (node, valueAccessor, allBindings, viewModel, bindingContext) {
-            const canvas = execute(node, valueAccessor, allBindings);
-            bindingContext.$data.pixelbg = {canvas: canvas};
+            // this is required for supporting both virtual elements and regular usages
+            const element = isVirtualElement(node) ? makeRealElement(node) : node;
+            const canvas = execute(element, valueAccessor, allBindings);
+            bindingContext.$data.pixelbg = {canvas: canvas, element: element};
         },
 
         // for update, we need to re-use the object (e.g. canvas), so we need to store it on the viewModel after init
         // viewModel is deprecated, so we use bindingContext.$data
         update: function (node, valueAccessor, allBindings, viewModel, bindingContext) {
+            // we need to retrieve the existing element, for it not to be recreated
+            const element = bindingContext.$data.pixelbg.element;
             const canvas = bindingContext.$data.pixelbg.canvas;
-            execute(node, valueAccessor, allBindings, canvas);
+            execute(element, valueAccessor, allBindings, canvas);
         }
     };
+
+    // we need to add the custom biding to this property, in order to be used as a virtual element
+    ko.virtualElements.allowedBindings.pixelbg = true;
 
     return ko;
 });
