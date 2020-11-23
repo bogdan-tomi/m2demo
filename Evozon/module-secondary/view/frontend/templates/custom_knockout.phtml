@@ -62,3 +62,20 @@ $dogeImage = json_encode($block->getViewFileUrl('Evozon_Secondary/images/doge.jp
     id est laborum.
     <!-- /ko -->
 </div>
+
+<script type="text/x-magento-init">{
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "virtual-element-custom-knockout": {
+                        "component": "Evozon_Secondary/js/viewmodel",
+                        "imageUrl": <?= $dogeImage ?>
+                    }
+                }
+            }
+        }
+    }
+</script>
+<div data-bind="scope: 'virtual-element-custom-knockout'">
+    <!-- ko template: 'Evozon_Secondary/virtual-element-node'--><!-- /ko -->
+</div>

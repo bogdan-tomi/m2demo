@@ -1,4 +1,8 @@
-define(['ko', 'Evozon_Secondary/js/plain/pixelbg'], function (ko, pixelBackground) {
+define([
+    'ko',
+    'Magento_Ui/js/lib/knockout/template/renderer',
+    'Evozon_Secondary/js/plain/pixelbg'
+], function (ko, renderer, pixelBackground) {
     'use strict';
 
     // as seen in angular/angular.js, the node type for comments is 8
@@ -66,6 +70,19 @@ define(['ko', 'Evozon_Secondary/js/plain/pixelbg'], function (ko, pixelBackgroun
 
     // we need to add the custom biding to this property, in order to be used as a virtual element
     ko.virtualElements.allowedBindings.pixelbg = true;
+
+    // the virtual elements is also required for custom nodes/attributes to work, as, under the hood,
+    // the Magento template renderer converts custom attributes into the data-bind syntax
+    // and custom elements into virtual elements, before passing the template string to ko, to apply the view model bindings
+
+    // allows pixelbg to be used as a custom node inside ko HTML templates
+    renderer.addNode('pixelbg');
+
+    // a different binding can be specified by using an object as the second argument, as seen at
+    // magento/module-ui/view/base/web/js/lib/knockout/bindings/i18n.js::174
+
+    // allows pixelbg to be used as a custom attribute ko HTML templates
+    renderer.addAttribute('pixelbg');
 
     return ko;
 });
