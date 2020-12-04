@@ -1,6 +1,9 @@
 <?php declare(strict_types=1);
 
-/** @var Evozon\Cache\Block\County $block */
+/** @var \Magento\Framework\View\Element\Template $block */
 
 ?>
-<h2><?= $block->getWelcomeText()?></h2>
+<?php
+// apparently Magento dislikes extending the Template block, so instead we should use a view model as a layout argument
+?>
+<h2><?= $block->getViewModel()->getWelcomeText()?></h2>

@@ -1,16 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace Evozon\Cache\Block;
+namespace Evozon\Cache\ViewModel;
 
 use Evozon\Cache\Model\Counties;
-use Magento\Framework\View\Element\Template as Template;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 
-class County extends Template
+// Magento prefers this implementation over creating a block that extends the Template
+class County implements ArgumentInterface // we need to implement this interface when using the object as a block argument
 {
     /*
      * @var array[]
      */
     private static array $cachedCounties = [];
+    /**
+     * @var Counties
+     */
+    private Counties $counties;
+
+    public function __construct(Counties $counties)
+    {
+        $this->counties = $counties;
+    }
 
     public function getWelcomeText(): string
     {
@@ -25,13 +35,10 @@ class County extends Template
         }
 
         /** @var Counties $countiesModel */
-        // retrieve the counties model given as an argument from the layout file,
-        // instead of injecting it in the constructor
-        $countiesModel = $this->getCountiesModel();
-        $counties = $countiesModel->getAllCounties();
+        // retrieve the counties model given as a constructor injection
+        $counties = $this->counties->getAllCounties();
 
         self::$cachedCounties[$ip] = $counties[array_rand($counties)];
         return sprintf('Hello %s county!', self::$cachedCounties[$ip]);
     }
-
 }

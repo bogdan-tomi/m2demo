@@ -4,7 +4,7 @@ namespace Evozon\Cache\Model;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
-class Counties implements ArgumentInterface // we need to implement this interface when using the object as a block argument
+class Counties
 {
     public function getAllCounties(): array
     {
