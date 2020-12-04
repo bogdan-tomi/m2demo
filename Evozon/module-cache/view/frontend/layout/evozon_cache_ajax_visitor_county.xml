@@ -4,7 +4,11 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <container name="visitor-county-container"> <!-- renders the output automatically -->
-            <block class="Evozon\Cache\Block\County" name="evozon_cache_county" template="Evozon_Cache::county.phtml" output="1"/>
+            <block class="Evozon\Cache\Block\County" name="evozon_cache_county" template="Evozon_Cache::county.phtml" output="1">
+                <arguments>
+                    <argument name="counties_model" xsi:type="object">Evozon\Cache\Model\Counties</argument>
+                </arguments>
+            </block>
         </container>
     </body>
 </page>

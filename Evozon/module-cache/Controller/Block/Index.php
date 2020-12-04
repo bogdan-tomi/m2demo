@@ -20,7 +20,7 @@ class Index implements HttpGetActionInterface
     public function execute()
     {
         $result = $this->layoutResultFactory->create();
-        $result->addHandle('default');
+        $result->addHandle('evozon_cache_ajax_visitor_county');
         return $result; // remember to return result
     }
 }
