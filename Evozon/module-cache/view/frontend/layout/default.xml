@@ -4,7 +4,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Evozon\Cache\Block\County" name="evozon_cache_county" template="Evozon_Cache::county.phtml"/>
+            <block name="visitor-county-wrapper" template="Evozon_Cache::county-wrapper.phtml"/>
         </referenceContainer>
     </body>
 </page>
