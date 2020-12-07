@@ -2,8 +2,12 @@ define(['jquery'], function ($) {
     'use strict';
 
     return function (config, element) {
-        $.get('/evozon-visitor-county/block', function (result) {
-            element.innerHTML = result;
-        })
+        $.get({
+            url: '/evozon-visitor-county/block',
+            cache: true,
+            success: function (result) {
+                element.innerHTML = result;
+            }
+        });
     }
 });

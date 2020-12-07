@@ -4,6 +4,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
+            <!-- add a wrapper on all the pages that contains a JS module which triggers an AJAX call-->
             <block name="visitor-county-wrapper" template="Evozon_Cache::county-wrapper.phtml"/>
         </referenceContainer>
     </body>
