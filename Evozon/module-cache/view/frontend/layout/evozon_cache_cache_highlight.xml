@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block name="evozon-cache-highlight" class="Evozon\Cache\Block\Highlight" template="Evozon_Cache::highlight.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="visitor-county-wrapper" remove="true"/>
+        <referenceBlock name="catalog.topnav" remove="true" />
+    </body>
+</page>
