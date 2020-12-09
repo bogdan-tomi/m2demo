@@ -7,5 +7,17 @@
             <!-- add a wrapper on all the pages that contains a JS module which triggers an AJAX call-->
             <block name="visitor-county-wrapper" template="Evozon_Cache::county-wrapper.phtml"/>
         </referenceContainer>
+        <referenceContainer name="header.container">
+            <block name="pet-choice" template="Evozon_Cache::segmentation/pet-choice.phtml">
+                <arguments>
+                    <argument name="pet_peeve" xsi:type="object">Evozon\Cache\Model\FavouritePetSession</argument>
+                </arguments>
+            </block>
+            <block name="favourite-pet" template="Evozon_Cache::segmentation/cat-or-dog.phtml">
+                <arguments>
+                    <argument name="favourite_pet_url" xsi:type="url" path="evozon_cache/cache/segmentation"/>
+                </arguments>
+            </block>
+        </referenceContainer>
     </body>
 </page>

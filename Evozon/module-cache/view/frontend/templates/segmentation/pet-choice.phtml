@@ -1,0 +1,17 @@
+<?php declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+
+/** @var \Evozon\Cache\Model\FavouritePetSession $petPeeve */
+$petPeeve = $block->getData('pet_peeve');
+?>
+
+<?php if ($petPeeve->hasChosen()): ?>
+    <div>
+        <?php if ($petPeeve->hatesCats()): ?>
+            <h3>So you hate cats hmmm</h3>
+        <?php else: ?>
+            <h3>So you hate dogs hmmm</h3>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

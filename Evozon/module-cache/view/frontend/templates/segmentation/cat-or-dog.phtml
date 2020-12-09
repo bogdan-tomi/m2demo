@@ -1,0 +1,21 @@
+<?php declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<p><?= __('Please select your favourite pet:') ?></p>
+<table style="max-width: 200px">
+    <tr>
+        <td>
+            <a href="<?= $escaper->escapeUrl($block->getFavouritePetUrl() . 'pet/cat') ?>">
+                <img style="max-width: 200px" src="<?= $block->getViewFileUrl('Evozon_Secondary/images/cate.jpg') ?>"/>
+            </a>
+        </td>
+        <td>
+            <a href="<?= $escaper->escapeUrl($block->getFavouritePetUrl() . 'pet/dog') ?>">
+                <img style="max-width: 200px" src="<?= $block->getViewFileUrl('Evozon_Secondary/images/doge.jpg') ?>"/>
+            </a>
+        </td>
+    </tr>
+</table>
