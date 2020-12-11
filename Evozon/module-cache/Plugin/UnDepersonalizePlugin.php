@@ -38,7 +38,7 @@ class UnDepersonalizePlugin
 
     public function afterGenerateXml(LayoutInterface $subject, $result)
     {
-        if ($this->petValue && $this->depersonalizeChecker->checkIfDepersonalize($subject)) {
+        if (isset($this->petValue) && $this->petValue && $this->depersonalizeChecker->checkIfDepersonalize($subject)) {
             $this->favouritePetSession->setFavouritePet($this->petValue);
         }
         return $result;
