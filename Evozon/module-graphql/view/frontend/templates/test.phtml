@@ -12,7 +12,19 @@
     }
 </script>
 <div data-bind="scope: 'graphql-test'">
-    <pre data-bind="text: JSON.stringify($data.result, null, 2) ">
-        Loading...
-    </pre>
+    <table data-bind="foreach: {data: result}">
+        <thead>
+            <tr>
+                <td data-bind="text: 'There are ' + data.products.total_count + ' products in total. Here\'s some of them: '"></td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: {data: data.products.items}">
+            <tr>
+                <td>
+                    <img style="max-width: 200px; max-height: 200px" data-bind="attr: {src: image.url}"/>
+                    <div data-bind="text: name"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
