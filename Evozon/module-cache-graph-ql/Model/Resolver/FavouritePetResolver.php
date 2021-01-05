@@ -19,6 +19,8 @@ class FavouritePetResolver implements ResolverInterface
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
         // the return type here must match the one declared in the etc/schema.graphqls
-        return $this->petSession->getFavouritePet();
+        return [
+            'model' => $this->petSession->getFavouritePet()
+        ];
     }
 }
