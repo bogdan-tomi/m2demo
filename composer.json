@@ -18,7 +18,7 @@
             "Evozon\\Secondary\\":      "Evozon/module-secondary/",
             "Evozon\\Cache\\":          "Evozon/module-cache/",
             "Evozon\\GraphQL\\":        "Evozon/module-graphql/",
-            "Evozon\\Cache-Graph-Ql\\": "Evozon/module-cache-graph-ql/"
+            "Evozon\\CacheGraphQl\\": "Evozon/module-cache-graph-ql/"
         }
     }
 }
