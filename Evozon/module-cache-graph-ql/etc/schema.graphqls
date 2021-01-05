@@ -1,0 +1,3 @@
+type Query {
+    favouritePet: String @doc(description: "Customer's favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetResolver")
+}
