@@ -1,7 +1,7 @@
 type Query {
-    favouritePet: FavouritePet! @doc(description: "Customer's favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetResolver")
+    favouritePet: FavouritePet! @doc(description: "Customer's favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetQueryResolver")
 }
 
 type FavouritePet {
-    model: String! @doc(description: "Model of the favourite pet")
+    model: String! @doc(description: "Model of the favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetModelResolver")
 }

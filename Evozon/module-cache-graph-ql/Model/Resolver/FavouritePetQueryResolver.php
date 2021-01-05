@@ -7,7 +7,7 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
-class FavouritePetResolver implements ResolverInterface
+class FavouritePetQueryResolver implements ResolverInterface
 {
     private FavouritePetSession $petSession;
 
