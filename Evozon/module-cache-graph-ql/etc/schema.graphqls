@@ -5,4 +5,5 @@ type Query {
 
 type FavouritePet {
     model: String! @doc(description: "Model of the favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetModelResolver")
+    randomProducts: [ProductInterface!]! @doc(description: "Products your pet might be interested in") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetProductsResolver")
 }
