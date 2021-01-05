@@ -14,10 +14,11 @@
             "Evozon/module-graphql/registration.php"
         ],
         "psr-4": {
-            "Evozon\\M2Demo\\":     "Evozon/module-m2demo/",
-            "Evozon\\Secondary\\":  "Evozon/module-secondary/",
-            "Evozon\\Cache\\":      "Evozon/module-cache/",
-            "Evozon\\GraphQL\\":    "Evozon/module-graphql/"
+            "Evozon\\M2Demo\\":         "Evozon/module-m2demo/",
+            "Evozon\\Secondary\\":      "Evozon/module-secondary/",
+            "Evozon\\Cache\\":          "Evozon/module-cache/",
+            "Evozon\\GraphQL\\":        "Evozon/module-graphql/",
+            "Evozon\\Cache-Graph-Ql\\": "Evozon/module-cache-graph-ql/"
         }
     }
 }
