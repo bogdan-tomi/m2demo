@@ -50,4 +50,11 @@ class FavouritePetSession extends SessionManager implements ArgumentInterface
     {
         return (bool) $this->getFavouritePet();
     }
+
+    public function getFavouritePetByCustomerId($customerId)
+    {
+        // this is where we pretend to retrieve the value from the database
+        $randomizedArray = [self::PET_CAT, self::PET_DOG];
+        return $randomizedArray[array_rand($randomizedArray)];
+    }
 }

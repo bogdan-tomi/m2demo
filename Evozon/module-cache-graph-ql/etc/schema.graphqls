@@ -1,9 +1,14 @@
 type Query {
-    favouritePet(defaultPet: String = "rock"): FavouritePet! @doc(description: "Customer's favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetQueryResolver")
+    favouritePet(defaultPet: String = "rock"): FavouritePet! @doc(description: "Customer's favourite pet")
+    @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetQueryResolver")
 #    the default value is more for documentation, as it is not retrieved by the resolver, and therefore the default values need to be treated by the custom resolver
 }
 
 type FavouritePet {
     model: String! @doc(description: "Model of the favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetModelResolver")
     randomProducts: [ProductInterface!]! @doc(description: "Products your pet might be interested in") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetProductsResolver")
+}
+
+type Customer {
+    favouritePet: FavouritePet @doc(description: "The customer's favourite pet") @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetQueryResolver")
 }
