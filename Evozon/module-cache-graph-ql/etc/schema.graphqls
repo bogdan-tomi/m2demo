@@ -1,7 +1,10 @@
 type Query {
     favouritePet(defaultPet: String = "rock"): FavouritePet! @doc(description: "Customer's favourite pet")
     @resolver(class: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\FavouritePetQueryResolver")
+    @cache(cacheIdentity: "\\Evozon\\CacheGraphQl\\Model\\Resolver\\CacheIdentity\\FavouritePetCacheIdentities")
 #    the default value is more for documentation, as it is not retrieved by the resolver, and therefore the default values need to be treated by the custom resolver
+#    very careful in this file not to duplicate types (like Query) because the first value gets overriden
+#    cache identity not working was fixed by updating the permissions for files/directories
 }
 
 type FavouritePet {
