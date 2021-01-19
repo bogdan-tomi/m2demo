@@ -5,4 +5,7 @@
     <event name="catalog_product_load_after">
         <observer name="evozon_m2_product_load_after" instance="Evozon\M2Demo\Observer\AlterProductName"/>
     </event>
+    <event name="custom_event">
+        <observer name="evozon_m2_custom_event" instance="Evozon\M2Demo\Observer\CustomEventObserver"/>
+    </event>
 </config>
