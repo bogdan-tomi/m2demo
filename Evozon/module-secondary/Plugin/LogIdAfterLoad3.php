@@ -6,7 +6,7 @@ use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
-class LogIdAfterLoad
+class LogIdAfterLoad3
 {
     /**
      * @var LoggerInterface
@@ -25,7 +25,7 @@ class LogIdAfterLoad
         $storeId = null,
         $forceReload = false
     ) {
-        $this->logger->info("1Logging before retrieving product by ID $productId");
+        $this->logger->info("3Logging before retrieving product by ID $productId");
 
     }
 
@@ -40,10 +40,10 @@ class LogIdAfterLoad
 //        $forceReload = false
 //        //...$args can be used here instead of all the arguments, for a more upgradable approach
 //    ) {
-//        $this->logger->info("1Logging around before retrieving product by ID $productId");
+//        $this->logger->info("3Logging around before retrieving product by ID $productId");
 //        $result = $proceed($productId, $editMode, $storeId, $forceReload);
 //        //$result = $proceed(...$args);
-//        $this->logger->info("1Logging around after retrieving product by ID $productId");
+//        $this->logger->info("3Logging around after retrieving product by ID $productId");
 //
 //        return $result;
 //    }
@@ -56,7 +56,7 @@ class LogIdAfterLoad
         $storeId = null,
         $forceReload = false
     ) {
-        $this->logger->info("1Logging after retrieving product by ID $productId");
+        $this->logger->info("3Logging after retrieving product by ID $productId");
 
         return $result;
     }

@@ -25,7 +25,7 @@ class LogProductIdBeforeLoadPlugin
         $forceReload = false
     ) {
 //        $productId++;
-        $this->logger->info("Logging before retrieving product by ID $productId");
+//        $this->logger->info("Logging before retrieving product by ID $productId");
 //        return [$productId, $editMode, $storeId, $forceReload];
     }
 }

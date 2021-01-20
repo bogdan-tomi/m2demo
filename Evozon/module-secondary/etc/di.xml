@@ -3,6 +3,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Catalog\Api\ProductRepositoryInterface">
-        <plugin name="evozon_secondary" type="Evozon\Secondary\Plugin\LogIdAfterLoad"/>
+        <plugin name="evozon_secondary" type="Evozon\Secondary\Plugin\LogIdAfterLoad" sortOrder="10"/>
+        <plugin name="evozon_secondary2" type="Evozon\Secondary\Plugin\LogIdAfterLoad2" sortOrder="20"/>
+        <plugin name="evozon_secondary3" type="Evozon\Secondary\Plugin\LogIdAfterLoad3" sortOrder="30"/>
+        <plugin name="evozon_secondary4" type="Evozon\Secondary\Plugin\LogIdAfterLoad4" sortOrder="40"/>
+        <plugin name="evozon_secondary5" type="Evozon\Secondary\Plugin\LogIdAfterLoad5" sortOrder="50"/>
+        <plugin name="evozon_secondary6" type="Evozon\Secondary\Plugin\LogIdAfterLoad6" sortOrder="60"/>
     </type>
 </config>
