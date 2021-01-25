@@ -3,4 +3,5 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 <preference for="Evozon\Api\Api\CustomerCountInterface" type="Evozon\Api\Model\Api\CustomerCount"/>
+    <preference for="Evozon\Api\Data\CustomerCountInterface" type="Evozon\Api\Model\CustomerCount"/>
 </config>
