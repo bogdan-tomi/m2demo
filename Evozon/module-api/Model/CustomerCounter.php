@@ -2,9 +2,9 @@
 
 namespace Evozon\Api\Model;
 
-use Evozon\Api\Api\Data\CustomerCountInterface;
+use Evozon\Api\Api\Data\CounterInterface;
 
-class CustomerCount implements CustomerCountInterface
+class CustomerCounter implements CounterInterface
 {
     private int $customerCount;
 

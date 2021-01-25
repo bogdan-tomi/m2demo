@@ -9,7 +9,7 @@ interface CustomerCountInterface
     /**
      * docblock return type required for reflection
      *
-     * @return Evozon\Api\Data\CustomerCountInterface
+     * @return Evozon\Api\Api\Data\CounterInterface
      */
     public function getCustomerCount();
 }

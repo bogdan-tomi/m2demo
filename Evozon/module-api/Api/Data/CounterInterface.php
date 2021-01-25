@@ -4,7 +4,7 @@
 namespace Evozon\Api\Api\Data;
 
 
-interface CustomerCountInterface
+interface CounterInterface
 {
     /**
      * @return int
