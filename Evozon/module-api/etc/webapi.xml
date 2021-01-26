@@ -8,4 +8,10 @@
             <resource ref="Evozon_Api::api"/>
         </resources>
     </route>
+    <route method="POST" url="/V1/orderComplete/:orderId">
+        <service class="Evozon\Api\Api\OrderCompleteInterface" method="execute"/>
+        <resources>
+            <resource ref="Evozon_Api::api"/>
+        </resources>
+    </route>
 </routes>
