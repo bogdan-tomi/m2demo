@@ -30,10 +30,6 @@ interface OrderCompleteInterface
      * @param bool|false $capture
      * @param InvoiceCommentCreationInterface|null $invoiceComment
      * @param InvoiceCreationArgumentsInterface|null $invoiceArguments
-     * @param string|null $emailSubject
-     * @param string|null $bodyHtml
-     * @param string|null $fromAddress
-     * @param string|null $toAddress
      *
      * @return string
      * @author Bogdan Tomi <bogdan.tomi@evozon.com>
@@ -49,10 +45,6 @@ interface OrderCompleteInterface
         ShipmentCreationArgumentsInterface $shipArguments = null,
         $capture = false,
         InvoiceCommentCreationInterface $invoiceComment = null,
-        InvoiceCreationArgumentsInterface $invoiceArguments = null,
-        $emailSubject = null,
-        $bodyHtml = null,
-        $fromAddress = null,
-        $toAddress = null
+        InvoiceCreationArgumentsInterface $invoiceArguments = null
     );
 }

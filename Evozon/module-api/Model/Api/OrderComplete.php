@@ -3,14 +3,14 @@
 namespace Evozon\Api\Model\Api;
 
 use Evozon\Api\Api\OrderCompleteInterface;
-use Magento\Framework\Mail\Template\TransportBuilder;
+use Evozon\Api\Api\SendOrderCompleteEmailInterface;
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Sales\Api\Data\InvoiceCommentCreationInterface;
 use Magento\Sales\Api\Data\InvoiceCreationArgumentsInterface;
 use Magento\Sales\Api\Data\ShipmentCommentCreationInterface;
 use Magento\Sales\Api\Data\ShipmentCreationArgumentsInterface;
 use Magento\Sales\Api\InvoiceOrderInterface;
 use Magento\Sales\Api\ShipOrderInterface;
-use Zend_Mail;
 
 class OrderComplete implements OrderCompleteInterface
 {
@@ -23,10 +23,14 @@ class OrderComplete implements OrderCompleteInterface
      */
     private ShipOrderInterface $shipOrder;
     /**
-     * @var TransportBuilder
+     * @var SendOrderCompleteEmailInterface
      */
-    private TransportBuilder $transportBuilder;
-    private Zend_Mail $mail;
+    private SendOrderCompleteEmailInterface $sendOrderEmail;
+
+    /**
+     * @var ManagerInterface
+     */
+    private ManagerInterface $eventManager;
 
     /**
      * OrderComplete constructor
@@ -34,19 +38,21 @@ class OrderComplete implements OrderCompleteInterface
     public function __construct(
         InvoiceOrderInterface $invoiceOrder,
         ShipOrderInterface $shipOrder,
-        TransportBuilder $transportBuilder,
-        Zend_Mail $mail
+        SendOrderCompleteEmailInterface $sendOrderEmail,
+        ManagerInterface $eventManager
     ) {
         $this->invoiceOrder = $invoiceOrder;
         $this->shipOrder = $shipOrder;
-        $this->transportBuilder = $transportBuilder;
-        $this->mail = $mail;
+        $this->sendOrderEmail = $sendOrderEmail;
+        $this->eventManager = $eventManager;
     }
 
+    // todo refactor docblocks
+    // todo add comments
     public function execute(
         $orderId,
         array $items = [],
-        $notify = false,
+        $notify = false, //todo separate all parameters for invoice / shipping
         $appendComment = false,
         ShipmentCommentCreationInterface $shipComment = null,
         array $tracks = [],
@@ -54,18 +60,14 @@ class OrderComplete implements OrderCompleteInterface
         ShipmentCreationArgumentsInterface $shipArguments = null,
         $capture = false,
         InvoiceCommentCreationInterface $invoiceComment = null,
-        InvoiceCreationArgumentsInterface $invoiceArguments = null,
-        $emailSubject = null,
-        $bodyHtml = null,
-        $fromAddress = null,
-        $toAddress = null
+        InvoiceCreationArgumentsInterface $invoiceArguments = null
     ) {
-        $this->invoiceOrder->execute($orderId, $capture, $items, $notify, $appendComment, $invoiceComment, $invoiceArguments);
-        $this->shipOrder->execute($orderId, $items, $notify, $appendComment, $shipComment, $tracks, $packages, $shipArguments);
-        $this->mail->setSubject($emailSubject)
-            ->setBodyHtml($bodyHtml)
-            ->setFrom($fromAddress)
-            ->addTo($toAddress)
-            ->send();
+        // todo add validation
+//        $this->invoiceOrder->execute($orderId, $capture, $items, $notify, $appendComment, $invoiceComment, $invoiceArguments);
+        // todo add stop further processing if this fails (check returned values)
+//        $this->shipOrder->execute($orderId, $items, $notify, $appendComment, $shipComment, $tracks, $packages, $shipArguments);
+        // todo add stop further processing if this fails (check returned values)
+
+        $this->eventManager->dispatch('evozon_api_order_complete_after', ['order_id' => $orderId]);
     }
 }

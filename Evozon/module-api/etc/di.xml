@@ -5,4 +5,5 @@
     <preference for="Evozon\Api\Api\CustomerCountInterface" type="Evozon\Api\Model\Api\CustomerCount"/>
     <preference for="Evozon\Api\Api\Data\CounterInterface" type="Evozon\Api\Model\CustomerCounter"/>
     <preference for="Evozon\Api\Api\OrderCompleteInterface" type="Evozon\Api\Model\Api\OrderComplete"/>
+    <preference for="Evozon\Api\Api\SendOrderCompleteEmailInterface" type="Evozon\Api\Model\Api\SendOrderCompleteEmail"/>
 </config>
