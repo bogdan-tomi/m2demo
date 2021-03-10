@@ -11,6 +11,7 @@
 
 namespace Evozon\Api\Model\Api;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Psr\Log\LoggerInterface;
@@ -29,18 +30,27 @@ class SendOrderCompleteEmail implements \Evozon\Api\Api\SendOrderCompleteEmailIn
      * @var OrderRepositoryInterface
      */
     private OrderRepositoryInterface $orderRepository;
+    /**
+     * @var ScopeConfigInterface
+     */
+    private ScopeConfigInterface $scopeConfig;
 
     /**
      * SendOrderCompleteEmail constructor.
      */
-    public function __construct(TransportBuilder $transportBuilder, LoggerInterface $logger, OrderRepositoryInterface $orderRepository)
-    {
+    public function __construct(
+        TransportBuilder $transportBuilder,
+        LoggerInterface $logger,
+        OrderRepositoryInterface $orderRepository,
+        ScopeConfigInterface $scopeConfig
+    ) {
         $this->transportBuilder = $transportBuilder;
         $this->logger = $logger;
         $this->orderRepository = $orderRepository;
+        $this->scopeConfig = $scopeConfig;
     }
 
-    public function execute($orderId) : bool
+    public function execute($orderId): bool
     {
         if (!$orderId) {
             return false;
@@ -48,12 +58,21 @@ class SendOrderCompleteEmail implements \Evozon\Api\Api\SendOrderCompleteEmailIn
 
         $order = $this->orderRepository->get($orderId);
 
-        $transport = $this->transportBuilder->setTemplateIdentifier(self::COMPLETE_ORDER_EMAIL_TEMPLATE_ID)
+        if ($order->getState() !== \Magento\Sales\Model\Order::STATE_COMPLETE) {
+            return false;
+        }
+
+        $transport = $this->transportBuilder->setTemplateIdentifier(
+            // we need to retrieve the value from the hidden configuration field
+            $this->scopeConfig->getValue(
+                self::XML_PATH_COMPLETE_ORDER_EMAIL_FIELD
+            )
+        )
             ->setTemplateVars([])
             ->setTemplateOptions(
                 [
-                    'area'=>\Magento\Framework\App\Area::AREA_FRONTEND,
-                    'store'=> $order->getStoreId()
+                    'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
+                    'store' => $order->getStoreId()
                 ]
             )
             ->addTo($order->getCustomerEmail())

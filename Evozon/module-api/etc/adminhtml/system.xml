@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hidden_evozon_sales" translate="label" sortOrder="10" showInDefault="0" showInWebsite="0" showInStore="0">
+            <group id="hidden_sales_general_configurations" translate="label" sortOrder="10" showInDefault="0" showInWebsite="0" showInStore="0">
+                <field id="hidden_complete_order_email_template" translate="label" type="select" sortOrder="10" showInDefault="0" showInWebsite="0" showInStore="0" />
+            </group>
+        </section>
+    </system>
+</config>

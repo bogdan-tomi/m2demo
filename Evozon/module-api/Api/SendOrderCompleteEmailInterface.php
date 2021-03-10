@@ -14,7 +14,9 @@ namespace Evozon\Api\Api;
 
 interface SendOrderCompleteEmailInterface
 {
-    const COMPLETE_ORDER_EMAIL_TEMPLATE_ID = 'evozon_api_complete_order';
+    const COMPLETE_ORDER_EMAIL_TEMPLATE_CODE = 'evozon_complete_order';
+
+    const XML_PATH_COMPLETE_ORDER_EMAIL_FIELD = 'hidden_evozon_sales/hidden_sales_general_configurations/hidden_complete_order_email_template';
 
     /**
      * @param int $orderId

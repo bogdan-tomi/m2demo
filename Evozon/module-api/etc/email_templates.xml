@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
-    <template id="evozon_api_complete_order" label="Custom Complete Order Email Template" file="complete_order.html" type="html" module="Evozon_Api" area="frontend"/>
-</config>
