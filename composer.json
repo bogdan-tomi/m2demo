@@ -13,7 +13,8 @@
             "Evozon/module-cache/registration.php",
             "Evozon/module-graphql/registration.php",
             "Evozon/module-cache-graph-ql/registration.php",
-            "Evozon/module-api/registration.php"
+            "Evozon/module-api/registration.php",
+            "Evozon/module-graphql-demo/registration.php"
         ],
         "psr-4": {
             "Evozon\\M2Demo\\":         "Evozon/module-m2demo/",
