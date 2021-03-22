@@ -21,7 +21,8 @@
             "Evozon\\Cache\\":          "Evozon/module-cache/",
             "Evozon\\GraphQL\\":        "Evozon/module-graphql/",
             "Evozon\\CacheGraphQl\\":   "Evozon/module-cache-graph-ql/",
-            "Evozon\\Api\\":            "Evozon/module-api/"
+            "Evozon\\Api\\":            "Evozon/module-api/",
+            "Evozon\\GraphQlDemo\\":    "Evozon/module-graphql-demo/"
         }
     }
 }
