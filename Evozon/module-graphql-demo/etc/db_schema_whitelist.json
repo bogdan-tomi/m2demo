@@ -1,0 +1,14 @@
+{
+    "evozon_graphql_demo_warranty_provider": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "country": true,
+            "rating_count": true,
+            "rating_average": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
