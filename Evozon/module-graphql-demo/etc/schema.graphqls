@@ -1,0 +1,28 @@
+type Query {
+    warrantyProviders(
+        filter: WarrantyProvidersFilterInput @doc(description: "Defines the input filter")
+        pageSize: Int = 5 @doc(description: "How many warranty providers should be displayed")
+        currentPage: Int = 1 @doc(description: "Pagination number")
+    ): warrantyProvidersOutput
+    @resolver(class: "\\Evozon\\GraphQlDemo\\Model\\Resolver\\WarrantyProviders")
+    @doc (description: "The implementation to resolve warranty providers")
+}
+
+input WarrantyProvidersFilterInput {
+    name: FilterTypeInput @doc(description: "Used to filter warranty providers by name")
+    country: FilterTypeInput @doc(description: "Used to filter warranty providers by country")
+    rating_count: FilterTypeInput @doc(description: "Used to filter warranty providers by rating_count")
+    rating_average: FilterTypeInput @doc(description: "Used to filter warranty providers by rating_average")
+}
+
+type warrantyProvidersOutput {
+    total_count: Int @doc(description: "Defines the query output total_count field")
+    items: [WarrantyProvider] @doc(description: "Defines the query output items field as an array of WarrantyProvider")
+}
+
+type WarrantyProvider {
+    name: String @doc(description: "Represents the name on the new type WarrantyProvider")
+    country: String @doc(description: "Represents the country on the new type WarrantyProvider")
+    rating_count: Int @doc(description: "Represents the rating_count on the new type WarrantyProvider")
+    rating_average: Float @doc(description: "Represents the rating_average on the new type WarrantyProvider")
+}

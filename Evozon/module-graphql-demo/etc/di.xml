@@ -4,4 +4,11 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Evozon\GraphQlDemo\Api\Data\WarrantyProviderInterface" type="Evozon\GraphQlDemo\Model\WarrantyProvider"/>
     <preference for="Evozon\GraphQlDemo\Api\WarrantyRepositoryInterface" type="Evozon\GraphQlDemo\Model\WarrantyProviderRepository"/>
+    <type name="Magento\Framework\GraphQl\Query\Resolver\Argument\FieldEntityAttributesPool">
+        <arguments>
+            <argument name="attributesInstances" xsi:type="array">
+                <item name="warranty_providers" xsi:type="object">Evozon\GraphQlDemo\Model\Resolver\FilterArgument</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
