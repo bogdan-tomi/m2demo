@@ -26,3 +26,19 @@ type WarrantyProvider {
     rating_count: Int @doc(description: "Represents the rating_count on the new type WarrantyProvider")
     rating_average: Float @doc(description: "Represents the rating_average on the new type WarrantyProvider")
 }
+
+type Mutation {
+    createWarranty (input: WarrantyProvidersInput!): createWarrantyProvidersOutput @resolver(class:"\\Evozon\\GraphQlDemo\\Model\\Resolver\\CreateWarranty")
+    @doc(description: "Create a warranty provider via mutation")
+}
+
+type createWarrantyProvidersOutput {
+    warranty: WarrantyProvider! @doc(description: "Return a warranty provider")
+}
+
+input WarrantyProvidersInput {
+    name: String @doc(description: "Represents the name on the new type WarrantyProviderInput")
+    country: String @doc(description: "Represents the country on the new type WarrantyProviderInput")
+    rating_count: Int @doc(description: "Represents the rating_count on the new type WarrantyProviderInput")
+    rating_average: Float @doc(description: "Represents the rating_average on the new type WarrantyProviderInput")
+}
