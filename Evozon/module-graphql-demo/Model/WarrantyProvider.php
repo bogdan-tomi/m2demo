@@ -62,7 +62,7 @@ class WarrantyProvider extends AbstractExtensibleModel implements WarrantyProvid
      */
     public function getRatingCount(): ?int
     {
-        return $this->getData(self::RATING_COUNT);
+        return (int) $this->getData(self::RATING_COUNT);
     }
 
     /**
@@ -78,7 +78,7 @@ class WarrantyProvider extends AbstractExtensibleModel implements WarrantyProvid
      */
     public function getRatingAverage(): ?float
     {
-        return $this->getData(self::RATING_AVERAGE);
+        return (float) $this->getData(self::RATING_AVERAGE);
     }
 
     /**

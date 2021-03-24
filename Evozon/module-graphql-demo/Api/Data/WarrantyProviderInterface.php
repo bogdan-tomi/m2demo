@@ -37,6 +37,7 @@ interface WarrantyProviderInterface
      * Sets the warranty provider name
      *
      * @param string|null $name
+     * @return void
      */
     public function setName(?string $name): void;
 
@@ -51,6 +52,7 @@ interface WarrantyProviderInterface
      * Sets the warranty provider country
      *
      * @param string|null $country
+     * @return void
      */
     public function setCountry(?string $country): void;
 
@@ -65,6 +67,7 @@ interface WarrantyProviderInterface
      * Sets the warranty provider rating count
      *
      * @param int|null $ratingCount
+     * @return void
      */
     public function setRatingCount(?int $ratingCount): void;
 
@@ -79,6 +82,7 @@ interface WarrantyProviderInterface
      * Sets the warranty provider rating average
      *
      * @param float|null $ratingAverage
+     * @return void
      */
     public function setRatingAverage(?float $ratingAverage): void;
 

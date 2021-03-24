@@ -21,6 +21,7 @@ interface WarrantyRepositoryInterface
      * Saves the warranty provider data
      *
      * @param WarrantyProviderInterface $warrantyProvider
+     * @return void
      */
     public function save(WarrantyProviderInterface $warrantyProvider): void;
 
