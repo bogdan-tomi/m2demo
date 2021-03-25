@@ -42,3 +42,7 @@ input WarrantyProvidersInput {
     rating_count: Int @doc(description: "Represents the rating_count on the new type WarrantyProviderInput")
     rating_average: Float @doc(description: "Represents the rating_average on the new type WarrantyProviderInput")
 }
+
+type Customer {
+    nickname: String @doc(description: "The customer's nickname") @resolver(class:"\\Evozon\\GraphQlDemo\\Model\\Resolver\\Customer\\Nickname")
+}
