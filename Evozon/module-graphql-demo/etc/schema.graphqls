@@ -12,8 +12,8 @@ type Query {
 input WarrantyProvidersFilterInput {
     name: FilterTypeInput @doc(description: "Used to filter warranty providers by name")
     country: FilterTypeInput @doc(description: "Used to filter warranty providers by country")
-    rating_count: FilterTypeInput @doc(description: "Used to filter warranty providers by rating_count")
-    rating_average: FilterTypeInput @doc(description: "Used to filter warranty providers by rating_average")
+    rating_count: FilterRangeTypeInput @doc(description: "Used to filter warranty providers by rating_count")
+    rating_average: FilterRangeTypeInput @doc(description: "Used to filter warranty providers by rating_average")
 }
 
 type warrantyProvidersOutput {
