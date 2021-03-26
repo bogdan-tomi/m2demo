@@ -6,6 +6,7 @@ type Query {
     ): warrantyProvidersOutput
     @resolver(class: "\\Evozon\\GraphQlDemo\\Model\\Resolver\\WarrantyProviders")
     @doc (description: "The implementation to resolve warranty providers")
+    myCustomerQuery: Customer @resolver(class: "\\Evozon\\GraphQlDemo\\Model\\Resolver\\Customer") @doc(description: "The custom customer query returns information about a customer account") @cache(cacheable: false)
 }
 
 input WarrantyProvidersFilterInput {
@@ -45,8 +46,4 @@ input WarrantyProvidersInput {
 
 type Customer {
     nickname: String @doc(description: "The customer's nickname") @resolver(class:"\\Evozon\\GraphQlDemo\\Model\\Resolver\\Customer\\Nickname")
-}
-
-type Query {
-    myCustomerQuery: Customer @resolver(class: "\\Evozon\\GraphQlDemo\\Model\\Resolver\\Customer") @doc(description: "The custom customer query returns information about a customer account") @cache(cacheable: false)
 }
