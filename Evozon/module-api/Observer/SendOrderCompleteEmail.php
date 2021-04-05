@@ -11,7 +11,7 @@
 
 namespace Evozon\Api\Observer;
 
-use Evozon\Api\Api\SendOrderCompleteEmailInterface;
+use Evozon\Api\Model\SendOrderCompleteEmailInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 

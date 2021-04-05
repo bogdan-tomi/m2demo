@@ -14,10 +14,4 @@
             <resource ref="Evozon_Api::api"/>
         </resources>
     </route>
-    <route method="POST" url="/V1/sendOrderCompleteEmail/:orderId">
-        <service class="Evozon\Api\Api\SendOrderCompleteEmailInterface" method="execute"/>
-        <resources>
-            <resource ref="Evozon_Api::api"/>
-        </resources>
-    </route>
 </routes>

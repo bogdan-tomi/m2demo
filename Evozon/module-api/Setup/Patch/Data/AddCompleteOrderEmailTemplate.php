@@ -52,7 +52,7 @@ class AddCompleteOrderEmailTemplate implements DataPatchInterface
     {
         // insert the new template into email_template
         $completeOrderEmail = [
-            'template_code' => \Evozon\Api\Api\SendOrderCompleteEmailInterface::COMPLETE_ORDER_EMAIL_TEMPLATE_CODE,
+            'template_code' => \Evozon\Api\Model\SendOrderCompleteEmailInterface::COMPLETE_ORDER_EMAIL_TEMPLATE_CODE,
             'template_type' => \Magento\Framework\App\TemplateTypesInterface::TYPE_HTML
         ];
 
@@ -67,7 +67,7 @@ class AddCompleteOrderEmailTemplate implements DataPatchInterface
         );
 
         $completeOrderEmailConfig = [
-            'path'  => \Evozon\Api\Api\SendOrderCompleteEmailInterface::XML_PATH_COMPLETE_ORDER_EMAIL_FIELD,
+            'path'  => \Evozon\Api\Model\SendOrderCompleteEmailInterface::XML_PATH_COMPLETE_ORDER_EMAIL_FIELD,
             'value' => $templateId
         ];
 

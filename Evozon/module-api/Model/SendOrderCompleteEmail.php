@@ -9,14 +9,14 @@
  * See COPYING.txt for license details.
  */
 
-namespace Evozon\Api\Model\Api;
+namespace Evozon\Api\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
-class SendOrderCompleteEmail implements \Evozon\Api\Api\SendOrderCompleteEmailInterface
+class SendOrderCompleteEmail implements \Evozon\Api\Model\SendOrderCompleteEmailInterface
 {
     /**
      * @var TransportBuilder

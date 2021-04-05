@@ -19,7 +19,7 @@ class SetTemplateCodeReadonlyPlugin
     ) {
         // disable editing the template code in admin for the complete order email template
         if ($form->getElement('template_code') && $form->getElement('template_code')->getValue() ===
-            \Evozon\Api\Api\SendOrderCompleteEmailInterface::COMPLETE_ORDER_EMAIL_TEMPLATE_CODE) {
+            \Evozon\Api\Model\SendOrderCompleteEmailInterface::COMPLETE_ORDER_EMAIL_TEMPLATE_CODE) {
             $form->getElement('template_code')->setReadonly(true, true);
         }
         return [$form];

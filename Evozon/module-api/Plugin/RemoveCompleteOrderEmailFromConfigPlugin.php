@@ -11,7 +11,7 @@
 
 namespace Evozon\Api\Plugin;
 
-use \Evozon\Api\Api\SendOrderCompleteEmailInterface as EvozonApiEmail;
+use \Evozon\Api\Model\SendOrderCompleteEmailInterface as EvozonApiEmail;
 
 class RemoveCompleteOrderEmailFromConfigPlugin
 {

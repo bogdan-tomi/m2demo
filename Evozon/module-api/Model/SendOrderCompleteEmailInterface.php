@@ -10,7 +10,7 @@
  */
 
 
-namespace Evozon\Api\Api;
+namespace Evozon\Api\Model;
 
 interface SendOrderCompleteEmailInterface
 {

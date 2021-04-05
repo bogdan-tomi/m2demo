@@ -3,7 +3,7 @@
 namespace Evozon\Api\Model\Api;
 
 use Evozon\Api\Api\OrderCompleteInterface;
-use Evozon\Api\Api\SendOrderCompleteEmailInterface;
+use Evozon\Api\Model\SendOrderCompleteEmailInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Sales\Api\Data\InvoiceCommentCreationInterface;
 use Magento\Sales\Api\Data\InvoiceCreationArgumentsInterface;
