@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 /**
- * This file was created to
+ * This observer was created to send a custom email
  *
- * @package     Evozon_
- * @subpackage
+ * @package     Evozon_Api
+ * @subpackage  Observer
  * @author      Bogdan Tomi <bogdan.tomi@evozon.com>
  * @copyright   Copyright (c) Evozon Systems
  * See COPYING.txt for license details.
@@ -30,6 +30,12 @@ class SendOrderCompleteEmail implements ObserverInterface
         $this->sendOrderEmail = $sendOrderEmail;
     }
 
+    /**
+     * Sends a custom email
+     *
+     * @event evozon_api_order_complete_after
+     * @param Observer $observer
+     */
     public function execute(Observer $observer)
     {
         $this->sendOrderEmail->execute($observer->getOrderId());

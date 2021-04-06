@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 /**
- * This file was created to
+ * This plugin was created to hide the custom email template from the email config
+ * so it cannot be used with other operations
  *
- * @package     Evozon_
- * @subpackage
+ * @package     Evozon_Api
+ * @subpackage  Plugin
  * @author      Bogdan Tomi <bogdan.tomi@evozon.com>
  * @copyright   Copyright (c) Evozon Systems
  * See COPYING.txt for license details.
@@ -15,8 +16,9 @@ use \Evozon\Api\Model\SendOrderCompleteEmailInterface as EvozonApiEmail;
 
 class RemoveCompleteOrderEmailFromConfigPlugin
 {
-
     /**
+     * Hides the custom email template
+     *
      * @param \Magento\Config\Model\Config\Source\Email\Template $subject
      * @param $result
      * @return array
@@ -33,5 +35,4 @@ class RemoveCompleteOrderEmailFromConfigPlugin
         }
         return $result;
     }
-
 }

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 /**
- * This file was created to
+ * This file was created to serve the implementation of sending a custom email template for a given order id
  *
- * @package     Evozon_
- * @subpackage
+ * @package     Evozon_Api
+ * @subpackage  Model
  * @author      Bogdan Tomi <bogdan.tomi@evozon.com>
  * @copyright   Copyright (c) Evozon Systems
  * See COPYING.txt for license details.
@@ -56,8 +56,10 @@ class SendOrderCompleteEmail implements \Evozon\Api\Model\SendOrderCompleteEmail
             return false;
         }
 
+        // retrieve the order by id
         $order = $this->orderRepository->get($orderId);
 
+        // exit if the order state is not complete
         if ($order->getState() !== \Magento\Sales\Model\Order::STATE_COMPLETE) {
             return false;
         }
@@ -68,6 +70,7 @@ class SendOrderCompleteEmail implements \Evozon\Api\Model\SendOrderCompleteEmail
                 self::XML_PATH_COMPLETE_ORDER_EMAIL_FIELD
             )
         )
+            //todo add template vars from request
             ->setTemplateVars([])
             ->setTemplateOptions(
                 [
@@ -75,6 +78,7 @@ class SendOrderCompleteEmail implements \Evozon\Api\Model\SendOrderCompleteEmail
                     'store' => $order->getStoreId()
                 ]
             )
+            // retrieve the customer email from the order
             ->addTo($order->getCustomerEmail())
             ->getTransport();
 

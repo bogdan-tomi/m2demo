@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 /**
- * This file was created to
+ * This plugin was created to set the custom email template code as readonly during admin email template edit,
+ * so it cannot be changed, as we are using the code for retrieving the actual template id stored in the database
  *
- * @package     Evozon_
- * @subpackage
+ * @package     Evozon_Api
+ * @subpackage  Plugin
  * @author      Bogdan Tomi <bogdan.tomi@evozon.com>
  * @copyright   Copyright (c) Evozon Systems
  * See COPYING.txt for license details.

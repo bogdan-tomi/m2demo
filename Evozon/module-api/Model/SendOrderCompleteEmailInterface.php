@@ -1,14 +1,13 @@
 <?php
 /**
- * This file was created to
+ * This file was created to serve as an interface the operation of sending a custom email template for a given order id
  *
- * @package     Evozon_
- * @subpackage
+ * @package     Evozon_Api
+ * @subpackage  Model
  * @author      Bogdan Tomi <bogdan.tomi@evozon.com>
  * @copyright   Copyright (c) Evozon Systems
  * See COPYING.txt for license details.
  */
-
 
 namespace Evozon\Api\Model;
 

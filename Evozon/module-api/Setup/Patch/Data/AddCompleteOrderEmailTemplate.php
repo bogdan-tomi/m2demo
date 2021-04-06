@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 /**
- * This file was created to
+ * This file was created to add the custom email template to the database
  *
- * @package     Evozon_
- * @subpackage
+ * @package     Evozon_Api
+ * @subpackage  Setup
  * @author      Bogdan Tomi <bogdan.tomi@evozon.com>
  * @copyright   Copyright (c) Evozon Systems
  * See COPYING.txt for license details.
