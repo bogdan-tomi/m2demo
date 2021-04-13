@@ -1,0 +1,26 @@
+<?php
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper  $escaper */
+
+use Evozon\Api\ViewModel\Upload;
+
+/** @var Upload $viewModel */
+$viewModel = $block->getViewModel();
+
+?>
+<form action="<?php echo $viewModel->getFormAction() ?>" method="post" id="form-validate" class="form" enctype="multipart/form-data">
+    <?= $block->getBlockHtml('formkey'); ?>
+    <fieldset class="fieldset" data-hasrequired="* Required Fields">
+        <legend class="legend"><span>Avatar</span></legend><br />
+        <div class="field avatar required">
+            <label for="avatar" class="label">Avatar</label>
+            <div class="control">
+                <input type="file" id="image" name="image" value="" class="input-file">
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <button name="submit" class="action primary" type="submit"><span>Submit</span></button>
+    </div>
+</form>
