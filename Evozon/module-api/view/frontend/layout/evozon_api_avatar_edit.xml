@@ -5,7 +5,7 @@
     <update handle="customer_account"/>
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" name="evozon.api.avatar" template="Evozon_Api::avatar/view.phtml">
+            <block class="Magento\Framework\View\Element\Template" name="evozon.api.avatar" template="Evozon_Api::avatar/view.phtml" cacheable="false">
                 <arguments>
                     <argument name="view_model" xsi:type="object">Evozon\Api\ViewModel\Upload</argument>
                 </arguments>

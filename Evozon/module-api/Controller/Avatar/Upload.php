@@ -60,7 +60,7 @@ class Upload implements HttpPostActionInterface
      * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
      * @throws \Magento\Framework\Exception\NotFoundException
      */
-    public function execute()
+    public function upload()
     {
         // redirect if user is not logged in
         if (!$this->customerSession->authenticate()) {

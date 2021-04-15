@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file was created to
  *
@@ -9,19 +9,13 @@
  * See COPYING.txt for license details.
  */
 
-
 namespace Evozon\Api\Api;
 
+use Evozon\Api\Api\Data\AvatarInterface;
 
-interface AvatarUploadInterface
+interface AvatarRepositoryInterface
 {
-    /**
-     * @return mixed
-     */
-    public function upload();
+    public function save(AvatarInterface $avatar): void;
 
-    /**
-     * @return string
-     */
-    public function retrieve(): string;
+    public function getByCustomerId(int $customerId): AvatarInterface;
 }

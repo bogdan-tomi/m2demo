@@ -15,7 +15,13 @@
         </resources>
     </route>
     <route method="POST" url="/V1/customerAvatarUpload/">
-        <service class="Evozon\Api\Api\AvatarUploadInterface" method="execute"/>
+        <service class="Evozon\Api\Api\AvatarUploadInterface" method="upload"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route method="GET" url="/V1/customerAvatarRetrieve/">
+        <service class="Evozon\Api\Api\AvatarUploadInterface" method="retrieve"/>
         <resources>
             <resource ref="self"/>
         </resources>

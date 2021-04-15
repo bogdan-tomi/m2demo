@@ -9,6 +9,9 @@ use Evozon\Api\ViewModel\Upload;
 $viewModel = $block->getViewModel();
 
 ?>
+<?php if ($avatar = $viewModel->getCurrentUserAvatar()): ?>
+    <img style="max-width: 200px" src="<?= $avatar;?>" alt="">
+<?php endif; ?>
 <form action="<?php echo $viewModel->getFormAction() ?>" method="post" id="form-validate" class="form" enctype="multipart/form-data">
     <?= $block->getBlockHtml('formkey'); ?>
     <fieldset class="fieldset" data-hasrequired="* Required Fields">

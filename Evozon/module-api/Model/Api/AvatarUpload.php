@@ -11,8 +11,15 @@
 
 namespace Evozon\Api\Model\Api;
 
+use Evozon\Api\Api\AvatarRepositoryInterface;
+use Evozon\Api\Api\Data\AvatarInterface;
+use Evozon\Api\Api\Data\AvatarInterfaceFactory;
+use Evozon\Api\Model\AvatarRepository;
+use Magento\Authorization\Model\CompositeUserContext;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\File\UploaderFactory;
+use Magento\Framework\UrlInterface;
+use Psr\Log\LoggerInterface;
 
 class AvatarUpload implements \Evozon\Api\Api\AvatarUploadInterface
 {
@@ -30,6 +37,22 @@ class AvatarUpload implements \Evozon\Api\Api\AvatarUploadInterface
     private \Magento\Framework\Filesystem\DirectoryList $directoryList;
     private \Magento\Cms\Helper\Wysiwyg\Images $cmsWysiwygImages;
     private \Magento\Store\Model\StoreManagerInterface $storeManager;
+    /**
+     * @var AvatarRepositoryInterface
+     */
+    private AvatarRepositoryInterface $avatarRepository;
+    /**
+     * @var AvatarInterfaceFactory
+     */
+    private AvatarInterfaceFactory $avatarFactory;
+    /**
+     * @var CompositeUserContext
+     */
+    private CompositeUserContext $compositeUserContext;
+    /**
+     * @var LoggerInterface
+     */
+    private LoggerInterface $logger;
 
 
     /**
@@ -40,16 +63,24 @@ class AvatarUpload implements \Evozon\Api\Api\AvatarUploadInterface
         JsonFactory $jsonFactory,
         \Magento\Framework\Filesystem\DirectoryList $directoryList,
         \Magento\Cms\Helper\Wysiwyg\Images $cmsWysiwygImages,
-        \Magento\Store\Model\StoreManagerInterface $storeManager
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        AvatarRepositoryInterface $avatarRepository,
+        AvatarInterfaceFactory $avatarInterfaceFactory,
+        CompositeUserContext $compositeUserContext,
+        LoggerInterface $logger
     ) {
         $this->uploaderFactory = $uploaderFactory;
         $this->jsonFactory = $jsonFactory;
         $this->directoryList = $directoryList;
         $this->cmsWysiwygImages = $cmsWysiwygImages;
         $this->storeManager = $storeManager;
+        $this->avatarRepository = $avatarRepository;
+        $this->avatarFactory = $avatarInterfaceFactory;
+        $this->compositeUserContext = $compositeUserContext;
+        $this->logger = $logger;
     }
 
-    public function execute()
+    public function upload()
     {
         $fileUploader = $this->uploaderFactory->create(['fileId' => 'image']);
 
@@ -64,9 +95,19 @@ class AvatarUpload implements \Evozon\Api\Api\AvatarUploadInterface
             }
 
             $result = $fileUploader->save($this->getUploadDir());
-            $baseUrl = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+            $baseUrl = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
             $result['id'] = $this->cmsWysiwygImages->idEncode($result['file']);
             $result['url'] = $baseUrl . $this->getFilePath(self::UPLOAD_DIR, $result['file']);
+
+            $customerId = (int) $this->compositeUserContext->getUserId();
+
+            /** @var AvatarInterface $avatar */
+            $avatar = $this->avatarFactory->create();
+
+            $avatar->setCustomerId($customerId);
+            $avatar->setValue('/' . $result['file']);
+
+            $this->avatarRepository->save($avatar);
         } catch (\Exception $e) {
             $result = [
                 'error' => $e->getMessage(),
@@ -74,6 +115,18 @@ class AvatarUpload implements \Evozon\Api\Api\AvatarUploadInterface
             ];
         }
         return $result;
+    }
+
+    public function retrieve(): string
+    {
+        $this->logger->info('retrieve avatar');
+        $customerId = (int) $this->compositeUserContext->getUserId();
+
+        $avatar = $this->avatarRepository->getByCustomerId((int) $customerId);
+
+        return $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA)
+            . self::UPLOAD_DIR
+            . $avatar->getValue();
     }
 
     /**

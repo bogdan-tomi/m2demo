@@ -11,11 +11,31 @@
 
 namespace Evozon\Api\ViewModel;
 
+use Evozon\Api\Model\Api\AvatarUpload;
+
 class Upload implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
+
+    private AvatarUpload $avatarUpload;
+
+
+    /**
+     * Upload constructor.
+     */
+    public function __construct(
+        AvatarUpload $avatarUpload
+    ) {
+        $this->avatarUpload = $avatarUpload;
+    }
 
     public function getFormAction(): string
     {
         return '/evozon_api/avatar/upload/';
     }
+
+    public function getCurrentUserAvatar(): string
+    {
+        return $this->avatarUpload->retrieve();
+    }
+
 }
