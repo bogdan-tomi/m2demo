@@ -70,7 +70,7 @@ class Upload implements HttpPostActionInterface
         }
 
         // upload the image using the custom API
-        $this->avatarUpload->execute();
+        $this->avatarUpload->upload();
 
         // redirect to the edit avatar page
         return $this->redirectFactory->create()->setPath('evozon_api/avatar/edit');
