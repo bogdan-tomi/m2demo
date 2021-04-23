@@ -122,7 +122,15 @@ class AvatarUpload implements \Evozon\Api\Api\AvatarUploadInterface
         $this->logger->info('retrieve avatar');
         $customerId = (int) $this->compositeUserContext->getUserId();
 
+        if (!$customerId) {
+            return '';
+        }
+
         $avatar = $this->avatarRepository->getByCustomerId((int) $customerId);
+
+        if (!$avatar->getValue()) {
+            return '';
+        }
 
         return DS . UrlInterface::URL_TYPE_MEDIA . DS
             . self::UPLOAD_DIR
