@@ -1,0 +1,18 @@
+type Query {
+    invitation(
+        pageSize: Int = 10 @doc(description: "How many invitations should be displayed")
+        currentPage: Int = 1 @doc(description: "Pagination number")
+    ): invitationOutput
+    @resolver(class: "\\Evozon\\Invitation\\Model\\Resolver\\Invitation")
+    @doc (description: "The implementation to resolve invitations")
+}
+
+type invitationOutput {
+    total_count: Int @doc(description: "Defines the query output total_count field")
+    items: [Invitation] @doc(description: "Defines the query output items field as an array of Invitation")
+}
+
+type Invitation {
+    email: String @doc(description: "Represents the email on the new type Invitation")
+    status: String @doc(description: "Represents the status on the new type Invitation")
+}
