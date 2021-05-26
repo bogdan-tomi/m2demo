@@ -16,6 +16,10 @@ use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Api\SearchResultsInterfaceFactory;
+use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Invitation\Model\Invitation;
+use Magento\Invitation\Model\ResourceModel\Invitation as InvitationResourceModel;
 use Magento\Invitation\Model\ResourceModel\Invitation\Collection;
 use Magento\Invitation\Model\ResourceModel\Invitation\CollectionFactory;
 use Magento\Framework\Api\Search\SearchCriteriaBuilder;
@@ -39,6 +43,10 @@ class InvitationRepository implements InvitationInterface
      * @var SearchCriteriaBuilder
      */
     private SearchCriteriaBuilder $searchCriteriaBuilder;
+    /**
+     * @var InvitationResourceModel
+     */
+    private InvitationResourceModel $invitationResourceModel;
 
     /**
      * InvitationRepository constructor
@@ -47,12 +55,14 @@ class InvitationRepository implements InvitationInterface
         CollectionFactory $invitationCollectionFactory,
         CollectionProcessorInterface $collectionProcessor,
         SearchResultsInterfaceFactory $searchResultsFactory,
-        SearchCriteriaBuilder $searchCriteriaBuilder
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        InvitationResourceModel $invitationResourceModel
     ) {
         $this->invitationCollectionFactory = $invitationCollectionFactory;
         $this->collectionProcessor = $collectionProcessor;
         $this->searchResultsFactory = $searchResultsFactory;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->invitationResourceModel = $invitationResourceModel;
     }
 
     /**
@@ -81,5 +91,25 @@ class InvitationRepository implements InvitationInterface
 
         return $searchResult;
     }
+
+    /**
+     *
+     *
+     * @param Invitation $invitation
+     * @throws AlreadyExistsException
+     * @throws CouldNotSaveException
+     * @author Bogdan Tomi <bogdan.tomi@evozon.com>
+     */
+    public function save(Invitation $invitation): void
+    {
+        try {
+            $this->invitationResourceModel->save($invitation);
+        } catch (AlreadyExistsException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            throw new CouldNotSaveException(__('Could not save invitation'), $e);
+        }
+    }
+
 
 }

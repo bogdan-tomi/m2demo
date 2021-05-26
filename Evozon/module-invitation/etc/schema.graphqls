@@ -16,3 +16,17 @@ type Invitation {
     email: String @doc(description: "Represents the email on the new type Invitation")
     status: String @doc(description: "Represents the status on the new type Invitation")
 }
+
+type Mutation {
+    createInvitation (input: InvitationInput!): createInvitationOutput @resolver(class:"\\Evozon\\Invitation\\Model\\Resolver\\CreateInvitation")
+    @doc(description: "Create an invitation via mutation")
+}
+
+input InvitationInput {
+    email: String @doc(description: "Represents the email on the new type InvitationInput")
+    message: String @doc(description: "Represents the message on the new type InvitationInput")
+}
+
+type createInvitationOutput {
+    invitation: Invitation! @doc(description: "Return an invitation")
+}

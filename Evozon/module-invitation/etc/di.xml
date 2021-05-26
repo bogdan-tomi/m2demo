@@ -9,4 +9,5 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Evozon\Invitation\Api\InvitationInterface" type="Evozon\Invitation\Model\InvitationRepository"/>
 </config>
