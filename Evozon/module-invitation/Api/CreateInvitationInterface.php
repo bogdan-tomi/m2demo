@@ -24,9 +24,9 @@ interface CreateInvitationInterface
     public function CreateInvitation();
 
     /**
-     * Returns true if a customer has been created successfully post-invitation
+     * Returns the login token if a customer has been created successfully post-invitation
      *
-     * @return bool
+     * @return string
      * @author Bogdan Tomi <bogdan.tomi@evozon.com>
      */
     public function CreateInvitationPost();

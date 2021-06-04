@@ -110,7 +110,7 @@ class CreateInvitation implements CreateInvitationInterface
     /**
      * --description
      *
-     * @return bool
+     * @return string
      * @throws \Exception
      * @author Bogdan Tomi <bogdan.tomi@evozon.com>
      */
