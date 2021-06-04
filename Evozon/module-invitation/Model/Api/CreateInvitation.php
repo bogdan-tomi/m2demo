@@ -14,8 +14,13 @@ use Evozon\Invitation\Api\CreateInvitationInterface;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
+use Magento\Customer\Model\CustomerFactory;
+use Magento\Customer\Model\Session;
+use Magento\Customer\Model\SessionFactory;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Integration\Model\Oauth\TokenFactory;
 use Magento\Invitation\Model\InvitationProvider;
 use Psr\Log\LoggerInterface;
 
@@ -41,6 +46,22 @@ class CreateInvitation implements CreateInvitationInterface
      * @var AccountManagementInterface
      */
     private AccountManagementInterface $accountManagement;
+    /**
+     * @var SessionFactory
+     */
+    private SessionFactory $sessionFactory;
+    /**
+     * @var CustomerFactory
+     */
+    private CustomerFactory $customerFactory;
+    /**
+     * @var ManagerInterface
+     */
+    private ManagerInterface $eventManager;
+    /**
+     * @var TokenFactory
+     */
+    private TokenFactory $tokenFactory;
 
 
     /**
@@ -51,13 +72,21 @@ class CreateInvitation implements CreateInvitationInterface
         RequestInterface $request,
         LoggerInterface $logger,
         CustomerInterfaceFactory $customerInterfaceFactory,
-        AccountManagementInterface $accountManagement
+        AccountManagementInterface $accountManagement,
+        CustomerFactory $customerFactory,
+        SessionFactory $sessionFactory,
+        ManagerInterface $eventManager,
+        TokenFactory $tokenFactory
     ) {
         $this->invitationProvider = $invitationProvider;
         $this->request = $request;
         $this->logger = $logger;
         $this->customerInterfaceFactory = $customerInterfaceFactory;
         $this->accountManagement = $accountManagement;
+        $this->customerFactory = $customerFactory;
+        $this->sessionFactory = $sessionFactory;
+        $this->eventManager = $eventManager;
+        $this->tokenFactory = $tokenFactory;
     }
 
     /**
@@ -100,7 +129,11 @@ class CreateInvitation implements CreateInvitationInterface
             $newCustomer = $this->accountManagement->createAccount($customer, $this->request->getParam('password'));
 
             $invitation->accept($newCustomer->getWebsiteId(), $newCustomer->getId());
-            return $newCustomer->getEmail() === $this->request->getParam('email');
+
+            $customerDataObject = $this->accountManagement->authenticate($newCustomer->getEmail(), $this->request->getParam('password'));
+            $this->eventManager->dispatch('customer_login', ['customer' => $customerDataObject]);
+
+            return $this->tokenFactory->create()->createCustomerToken($customerDataObject->getId())->getToken();
 
         } catch (LocalizedException $e) {
             //todo the exception catching could be more specific
